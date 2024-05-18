@@ -3,8 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-#Prueba para hacer commit y push al respositorio
-
 # C extensions
 *.so
 
