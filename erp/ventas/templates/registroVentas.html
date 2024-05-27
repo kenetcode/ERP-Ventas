@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ventas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/registroVentas.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Ventas</h1>
+        <div class="periodo">
+            <label for="periodo">Periodo</label>
+            <input type="text" id="periodo" value="31/12/2023 - 30/12/2024" readonly>
+            <button class="fecha">
+                <img src="https://acortar.link/vKsPv3" alt="fecha">
+            </button>
+        </div>
+        <div class="buttons">
+            <button class="ventas">Nueva Venta</button>
+        </div>
+        <div class = "table-container" style="overflow-y: auto; height: 450px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Número</th>
+                    <th>Vencimiento</th>
+                    <th>Cliente</th>
+                    <th>Descripción</th>
+                    <th>Total</th>
+                    <th>Editar</th>
+                    <th>Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>21/04/2023</td>
+                    <td>A10000</td>
+                    <td>30/04/2024</td>
+                    <td>KPC Hardware</td>
+                    <td>Alquiler</td>
+                    <td>1500.00</td>
+                    <td>
+                        <button class="edit">✏️</button>
+                        
+                    </td>
+                    <td>
+                        <button class="delete">🗑️</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>                       
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</body>
+</html>
