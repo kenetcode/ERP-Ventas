@@ -17,3 +17,5 @@ def login_view(request):
             return render(request, 'login.html', {'error': 'Nombre de usuario o contraseña inválidos'})
     else:
         return render(request, 'login.html')
+    
+    
