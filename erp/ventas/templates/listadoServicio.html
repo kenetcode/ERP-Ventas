@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = es>
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Listado de Servicio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/listadoServicio.css' %}">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Listado de Servicios</h1>
+        </header>
+
+        <div class = "search-bar">
+                <label for = "Servicio">Servicio:</label>
+                <input type = "text" id = "servicio" name = "servicio">
+                <button> Buscar Servicio</button>
+        </div>   
+        
+        <div class="buttons">
+            <button>Ingresar Servicio</button>
+        </div>
+
+        <div class = "table-container" style="overflow-y: auto; height: 450px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Codigo</th>
+                        <th>Costo</th>
+                        <th>Total</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Local</td>
+                        <td>Alquiler</td>
+                        <td>A2954</td>
+                        <td>$5000.00</td>
+                        <td>$5490.00</td>
+                        <td class="icon">
+                            <button class="edit-button">
+                                <img src="https://acortar.link/2XuSev" alt="Editar">
+                            </button>
+                        </td>
+                        <td class="icon">
+                            <button class="delete-button">
+                                <img src="https://acortar.link/49Ychz" alt="Eliminar">
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Estacionamiento</td>
+                        <td>Establecimiento en la segunda planta</td>
+                        <td>B2910</td>
+                        <td>$4500.00</td>
+                        <td>$4800.00</td>
+                        <td class="icon">
+                            <button class="edit-button">
+                                <img src="https://acortar.link/2XuSev" alt="Editar">
+                            </button>
+                        </td>
+                        <td class="icon">
+                            <button class="delete-button">
+                                <img src="https://acortar.link/49Ychz" alt="Eliminar">
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td ></td>
+                        <td ></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</body>
+</html>
