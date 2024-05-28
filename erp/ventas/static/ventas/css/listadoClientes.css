@@ -1,0 +1,103 @@
+body{ /*Este el es css para el cuerpo de la pagina*/
+    font-family: 'Times New Roman', Times, serif; /*Tipo de letra*/
+    background-color: #ffffdf; /*Fondo*/
+    margin: 0% 10%; /*Margen*/
+    padding: 0; /*Borde (no valores negativos)*/
+}
+
+.table-container{ /*Cambios para la clase de la tabla*/
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table { 
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th{
+    background-color: #aa8caf;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #aa8caf;
+}
+
+.icon button{ /*Al momento de pasar el cursor en la imagen se cambia el cursor*/
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.icon button img{ /*Tamaño de la imagen*/
+    width: 35px;
+    height: 35px;
+    display: block;
+}
+
+header h1 {
+    text-align: center;
+    color: black;
+}
+
+.buttons button{
+    margin-right: 10px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius:6px;
+    cursor: pointer;
+    border: 1px solid ;
+    background-color: purple;
+    opacity: 0.7;
+    
+}
+
+button:hover {
+    opacity: 1; /* Opacidad del 100% al pasar el cursor */
+}
+
+.search-bar button:hover {
+    opacity: 1; /* Opacidad del 100% al pasar el cursor */
+}
+
+.search-bar input{
+    width: 150px;
+    height: 20px;
+    margin-right: 6px;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.search-bar button{
+    margin-right: 10px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius:6px;
+    cursor: pointer;
+    border: 1px solid ;
+    background-color: purple;
+    opacity: 0.7;
+}
+
+.buttons button{
+    position: absolute;
+    right: 130px;
+    margin-top: -28px;
+}
+
+.search-bar label{
+    position: absolute;
+    margin-top: -25px;
+}
