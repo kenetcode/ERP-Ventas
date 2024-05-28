@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0 10px;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.header-buttons {
+    margin-left: 440px;
+    margin-top: 20px;
+    width: 200px; 
+    margin-left: auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+input[type="text"], select, input[type="date"] {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 5px 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.add-line {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.generate-invoice {
+    margin-top: 20px;
+}
+
+
+.summary {
+    float: right;
+    padding: 10px;
+    width: 200px;
+    margin-top: -150px;
+}
+
+.summary table {
+    width: 100%;
+}
+
+.summary td {
+    padding: 5px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save-button, .cancel-button {
+    margin-left: 10px;
+}
