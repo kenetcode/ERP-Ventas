@@ -38,3 +38,6 @@ def generarInformeVenta_View(request):
 
 def agregarModificarVenta_View(request):
     return render(request, 'agregarModificarVenta.html')
+
+def menuGestor_View(request):
+    return render(request, 'menuGestor.html')
