@@ -12,5 +12,6 @@ urlpatterns = [
     path('agregarModificarVenta/', views.agregarModificarVenta_View, name='agregarModificarVenta'),
     path('listadoClientes/', views.listadoClientes_View, name='listadoClientes'),
     path('ingresarCliente/', views.ingresarCliente_View, name='ingresarCliente'),
-    path('menuAdministrador/', views.menuAdministrador_View, name='menuAdministrador')
+    path('menuAdministrador/', views.menuAdministrador_View, name='menuAdministrador'),
+    path('generarFactura/', views.generarFactura_View, name='generarFactura')
 ]

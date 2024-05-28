@@ -44,3 +44,6 @@ def menuGestor_View(request):
 
 def menuAdministrador_View(request):
     return render(request, 'menuAdministrador.html')
+
+def generarFactura_View(request):
+    return render(request, 'generarFactura.html')
