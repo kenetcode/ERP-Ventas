@@ -41,3 +41,6 @@ def agregarModificarVenta_View(request):
 
 def menuGestor_View(request):
     return render(request, 'menuGestor.html')
+
+def menuAdministrador_View(request):
+    return render(request, 'menuAdministrador.html')

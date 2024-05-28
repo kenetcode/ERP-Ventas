@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Menu Administrador</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/menuAdministrador.css' %}">
+    </head>
+    <body>
+        <div class="logo">
+            <img src="https://acortar.link/XwtBhY" alt="Logo">
+            <label class="logo-label">Administrador</label>
+        </div>
+        <ul>
+            <li style="--clr:#6010eb">
+                <a href = "#" data-text="&nbsp;Listado de Clientes">
+                    &nbsp;Listado de Clientes&nbsp;
+                </a>
+            </li>
+            <li style="--clr:#a617b3">
+                <a href = "#" data-text="&nbsp;Registro de Ventas">
+                    &nbsp;Registro de Ventas&nbsp;
+                </a>
+            </li>
+            <li style="--clr:#d6461e">
+                <a href = "#" data-text="&nbsp;Informe de Ventas">
+                    &nbsp;Informe de Ventas&nbsp;
+                </a>
+            </li>
+            <li style="--clr:#FFFF00">
+                <a href = "#" data-text="&nbsp;Listado de Servicio">
+                    &nbsp;Listado de Servicio&nbsp;
+                </a>
+            </li>
+        </ul>
+        <button class="exit-button">Salir</button>
+    </body>
+</html>
