@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = es>
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Listado de Servicio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/listadoServicio.css' %}">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Listado de Clientes</h1>
+        </header>
+
+        <div class = "search-bar">
+                <label for = "Cliente">Cliente:</label>
+                <input type = "text" id = "cliente" name = "cliente", placeholder="Buscar">
+                <button> Buscar</button>
+        </div>   
+        
+        <div class="buttons">
+            <button>Nuevo</button>
+        </div>
+
+        <div class = "table-container" style="overflow-y: auto; height: 450px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Dirreccion</th>
+                        <th>telefono</th>
+                        <th>Email</th>
+                        <th>Nombre Comercial</th>
+                        <th>tipo de Cliente</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Rodrigo Benitez</td>
+                        <td>San Salvador</td>
+                        <td>7719-1243</td>
+                        <td>Benitez@gmail.com</td>
+                        <td>Rod-B</td>
+                        <td>Persona</td>
+                        <td class="icon">
+                            <button class="edit-button">
+                                <img src="https://acortar.link/2XuSev" alt="Editar">
+                            </button>
+                        </td>
+                        <td class="icon">
+                            <button class="delete-button">
+                                <img src="https://acortar.link/49Ychz" alt="Eliminar">
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Salvador German</td>
+                        <td>San Miguel</td>
+                        <td>2342-5643</td>
+                        <td>SGerman@gmail.com</td>
+                        <td>S-German</td>
+                        <td>Empresa</td>
+                        <td class="icon">
+                            <button class="edit-button">
+                                <img src="https://acortar.link/2XuSev" alt="Editar">
+                            </button>
+                        </td>
+                        <td class="icon">
+                            <button class="delete-button">
+                                <img src="https://acortar.link/49Ychz" alt="Eliminar">
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td ></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td ></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td ></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</body>
+</html>

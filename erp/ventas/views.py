@@ -26,3 +26,6 @@ def newService_View(request):
 
 def registroVentas_View(request):
     return render(request, 'registroVentas.html')
+
+def listadoClientes_View(request):
+    return render(request, 'listadoClientes.html')
