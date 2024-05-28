@@ -29,3 +29,6 @@ def registroVentas_View(request):
 
 def listadoClientes_View(request):
     return render(request, 'listadoClientes.html')
+
+def ingresarCliente_View(request):
+    return render(request, 'ingresarCliente.html')

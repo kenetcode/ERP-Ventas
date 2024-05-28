@@ -23,5 +23,6 @@ urlpatterns = [
     path('listadoServicio/', include('ventas.urls')),
     path('nuevoServicio/', include('ventas.urls')),
     path('registroVentas/', include('ventas.urls')),
-    path('listadoClientes/', include('ventas.urls'))
+    path('listadoClientes/', include('ventas.urls')),
+    path('ingresarCliente/', include('ventas.urls'))
 ]
