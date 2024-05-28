@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Ventas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/generarInformeVenta.css' %}">
+</head>
+<body>
+    <div class="Title">
+        <h1> Informe de Ventas</h1>
+    </div>
+    <div class="header">
+        <div class="input-group">
+            <label for="venta">Venta:</label>
+            <input type="text" id="venta" placeholder="Buscar">
+        </div>
+
+        <div class="input-group">
+            <label for="fecha" id="labelFecha">Fecha:</label>
+            <input type="date" id="fecha">
+        </div>
+        <button id="imprimir" class="print-button">Imprimir</button>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Mes</th>
+                <th>Venta</th>
+                <th>Suma de Total Venta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Enero</td>
+                <td>Local</td>
+                <td>$#####</td>
+            </tr>
+            <tr>
+                <td>Enero</td>
+                <td>Parqueo</td>
+                <td>$#####</td>
+            </tr>
+            <tr>
+                <td>Enero</td>
+                <td>Parqueo</td>
+                <td>$#####</td>
+            </tr>
+            <tr>
+                <td>Enero</td>
+                <td>Parqueo</td>
+                <td>$#####</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Total General</td>
+                <td>$#####</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

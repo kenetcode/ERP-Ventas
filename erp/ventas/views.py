@@ -32,3 +32,6 @@ def listadoClientes_View(request):
 
 def ingresarCliente_View(request):
     return render(request, 'ingresarCliente.html')
+
+def generarInformeVenta_View(request):
+    return render(request, 'generarInformeVenta.html')
