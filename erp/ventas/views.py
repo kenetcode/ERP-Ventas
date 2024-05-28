@@ -14,21 +14,25 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('/')
         else:
             return render(request, 'login.html', {'error': 'Nombre de usuario o contraseña inválidos'})
     else:
         return render(request, 'login.html')
     
+@login_required    
 def listadoServicio_View(request):
     return render(request, 'listadoServicio.html')
 
+@login_required 
 def newService_View(request):
     return render(request, 'nuevoServicio.html')
 
+@login_required 
 def registroVentas_View(request):
     return render(request, 'registroVentas.html')
 
+@login_required 
 def listadoClientes_View(request):
     lista = Cliente.objects.all()
     datos = {'clientes' : lista}
@@ -47,26 +51,32 @@ def ingresarCliente(request):
         cliente.save()
         return redirect('/ingresarclienteview/')
 
+@login_required
 def ingresarCliente_View(request):
     return render(request, 'ingresarCliente.html')
 
+@login_required 
 def eliminarCliente(request, id):
     cliente = Cliente.objects.get(id=id)
     cliente.delete()
     return redirect('/listadoClientes/')
 
+@login_required 
 def consultarCliente(request):
     if request.method == 'POST':
         name = request.POST.get('nombre')
         cliente = Cliente.objects.filter(nombre=name)
         return render(request, 'listadoClientes.html', {'clientes': cliente})
 
+@login_required 
 def generarInformeVenta_View(request):
     return render(request, 'generarInformeVenta.html')
 
+@login_required 
 def agregarModificarVenta_View(request):
     return render(request, 'agregarModificarVenta.html')
 
+@login_required 
 def menuGestor_View(request):
     return render(request, 'menuGestor.html')
 
