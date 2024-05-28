@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'erp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+#esta es la configuracion que funciona para sqlite la db por defecto de Django
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -87,6 +88,19 @@ DATABASES = {
     }
 }
 
+"""
+#Configuracion de la DB para posgresql
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ventas',
+        'USER': 'postgres',
+        'PASSWORD': 'ventas$',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
