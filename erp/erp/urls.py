@@ -27,5 +27,6 @@ urlpatterns = [
     path('ingresarCliente/', include('ventas.urls')),
     path('generarInformeVenta/', include('ventas.urls')),
     path('agregarModificarVenta/', include('ventas.urls')),
-    path('menuGestor/', include('ventas.urls'))
+    path('menuGestor/', include('ventas.urls')),
+    path('generarFactura/', include('ventas.urls'))
 ]

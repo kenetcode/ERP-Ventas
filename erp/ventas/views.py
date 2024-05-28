@@ -41,3 +41,6 @@ def agregarModificarVenta_View(request):
 
 def menuGestor_View(request):
     return render(request, 'menuGestor.html')
+
+def generarFactura_View(request):
+    return render(request, 'generarFactura.html')

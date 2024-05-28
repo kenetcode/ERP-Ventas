@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/generarFactura.css' %}">
+</head>
+<body>
+    <div class="invoice">
+        <h1>Factura</h1>
+        <div class="invoice-header">
+            <div class="invoice-number">
+                <p>Número: F240001</p>
+                <p>Fecha: ##/4/2024</p>
+            </div>
+            <div class="invoice-company">
+                <p>Nombre de la empresa</p>
+            </div>
+            <div class="invoice-client">
+                <p>Cliente</p>
+                <p>Nombre del cliente</p>
+            </div>
+        </div>
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>CONCEPTO</th>
+                    <th>PRECIO</th>
+                    <th>UNIDADES</th>
+                    <th>SUBTOTAL</th>
+                    <th>IVA</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Concepto1</td>
+                    <td>$###.##</td>
+                    <td>##</td>
+                    <td>$###.##</td>
+                    <td>$###.##</td>
+                    <td>$###.##</td>
+                </tr>
+                <tr>
+                    <td>Concepto2</td>
+                    <td>$###.##</td>
+                    <td>##</td>
+                    <td>$###.##</td>
+                    <td>$###.##</td>
+                    <td>$###.##</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4"></td>
+                    <td>SUBTOTAL</td>
+                    <td>$###.##</td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                    <td>IVA</td>
+                    <td>$###.##</td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                    <td>TOTAL DE TODA LA VENTA</td>
+                    <td>$###.##</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="buttons">
+            <button>Aceptar</button>
+            <button>Imprimir</button>
+        </div>
+    </div>
+</body>
+</html>
