@@ -23,3 +23,6 @@ def listadoServicio_View(request):
 
 def newService_View(request):
     return render(request, 'nuevoServicio.html')
+
+def registroVentas_View(request):
+    return render(request, 'registroVentas.html')
