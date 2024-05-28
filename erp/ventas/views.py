@@ -35,3 +35,6 @@ def ingresarCliente_View(request):
 
 def generarInformeVenta_View(request):
     return render(request, 'generarInformeVenta.html')
+
+def agregarModificarVenta_View(request):
+    return render(request, 'agregarModificarVenta.html')
