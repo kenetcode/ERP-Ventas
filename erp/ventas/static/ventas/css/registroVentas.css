@@ -31,7 +31,7 @@ h1 {
 .periodo input {
     width: 200px;
     padding: 5px;
-    margin-left: 730px;
+    margin-left: 720px;
 }
 
 .buttons button {
@@ -80,20 +80,3 @@ button.edit:hover, button.delete:hover, button.fecha:hover, button.ventas:hover 
     opacity: 0.7;
 }
 
-.periodo button img{ /*Tamaño de la imagen*/
-    width: 35px;
-    height: 35px;
-    display: block;
-    margin-right: 140px;
-}
-
-.periodo button{ /*Al momento de pasar el cursor en la imagen se cambia el cursor*/
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    margin-right: 200px;
-    margin-top: -10px;
-    width: 25px;
-    height: 25px;
-}
