@@ -26,3 +26,6 @@ def newService_View(request):
 
 def registroVentas_View(request):
     return render(request, 'registroVentas.html')
+
+def ingresarCliente_View(request):
+    return render(request, 'ingresarCliente.html')

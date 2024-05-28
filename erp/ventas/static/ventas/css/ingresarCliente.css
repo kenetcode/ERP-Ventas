@@ -1,0 +1,101 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif; /*Tipo de letra*/
+    background-color: #ffffdf; /*Fondo*/
+    margin: 0% 10%; /*Margen*/
+    padding: 0; /*Borde (no valores negativos)*/
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.1) inset, /* Sombra interior */
+                0 -5px 15px rgba(255, 255, 255, 0.5) inset; /* Resplandor interno */
+    width: 700px;  /* Ancho ajustado */
+    height: 500px;  /* Altura ajustada */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
+}
+
+header h1 {
+    text-align: center;
+    color: black;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    display:  block;
+    margin-top: 10px;
+}
+
+#label-tipo-cliente {
+    position: absolute;
+    top: 155px; /* Mueve el label hacia abajo */
+    left: 930px; /* Mueve el label hacia la derecha */
+}
+
+select[id="tipo-cliente"]{
+    position: absolute;
+    top: 29%;
+    left: 69%;
+    width: auto;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.cancel button{
+    margin-right: 10px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius:6px;
+    cursor: pointer;
+    border: 1px solid ;
+    background-color: purple;
+    opacity: 0.7;
+    margin: Center;
+    position: absolute;
+    top: 80%;
+    left: 62%;
+    width: auto;
+    height: 40px;
+    
+}
+
+.guardar button{
+    margin-right: 10px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius:6px;
+    cursor: pointer;
+    border: 1px solid ;
+    background-color: purple;
+    opacity: 0.7;
+    position: absolute;
+    top: 80%;
+    left: 70%;
+    width: auto;
+    height: 40px;
+}
+
+.cancel button:hover {
+    opacity: 1; /* Opacidad del 100% al pasar el cursor */
+}
+
+.guardar button:hover {
+    opacity: 1; /* Opacidad del 100% al pasar el cursor */
+}
