@@ -58,6 +58,7 @@ input[type="email"] {
 
 .cancel button{
     margin-right: 10px;
+    margin-left: auto;
     padding: 5px 10px;
     color: white;
     border: none;
@@ -75,8 +76,13 @@ input[type="email"] {
     
 }
 
+.guardar {
+    display: flex;
+    justify-content: space-between;
+}
+
 .guardar button{
-    margin-right: 10px;
+    margin-left: auto;
     padding: 5px 10px;
     color: white;
     border: none;
@@ -87,8 +93,8 @@ input[type="email"] {
     opacity: 0.7;
     position: absolute;
     top: 80%;
-    left: 70%;
-    width: auto;
+    left: 68%;
+    width: 200;
     height: 40px;
 }
 
