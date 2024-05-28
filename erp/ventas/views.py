@@ -20,3 +20,6 @@ def login_view(request):
     
 def listadoServicio_View(request):
     return render(request, 'listadoServicio.html')
+
+def generarInformeVenta_View(request):
+    return render(request, 'generarInformeVenta.html')
