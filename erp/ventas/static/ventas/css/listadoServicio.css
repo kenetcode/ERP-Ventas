@@ -5,6 +5,7 @@ body{ /*Este el es css para el cuerpo de la pagina*/
     padding: 0; /*Borde (no valores negativos)*/
 }
 
+
 .table-container{ /*Cambios para la clase de la tabla*/
     overflow-x: auto;
     margin-top: 20px;
@@ -101,3 +102,6 @@ button:hover {
     position: absolute;
     margin-top: -25px;
 }
+
+
+

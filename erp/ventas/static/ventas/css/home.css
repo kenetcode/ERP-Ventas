@@ -40,6 +40,27 @@ body.dark{
     --text-color: #ccc;
 }
 
+body.dark .text,
+body.dark label,
+body.dark .nav-text,
+body.dark header h1 {
+    color: #fff;
+}
+
+/* Estilos para los elementos que no deben cambiar en modo oscuro */
+body.dark .table th,
+body.dark .table-container td {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Opcional: Si necesitas mantener el color del texto en los botones */
+body.dark .buttons button,
+body.dark .search-bar button {
+    background-color: #800080; /* El color que usas para los botones */
+    color: yellow;
+}
+
  .sidebar{
     position: fixed;
     top: 0;
