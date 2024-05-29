@@ -5,9 +5,100 @@
     <meta charset = "UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Listado de Servicio</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/listadoServicio.css' %}">
+    <link rel="stylesheet" href="{% static 'ventas/css/home.css' %}">
 </head>
 <body>
+
+    <nav class="sidebar close">
+        <header>
+          <div class="image-text">
+            <span class="image">
+              <img src="https://acortar.link/ImyhM4" alt="">
+            </span>
+    
+            <div class="text logo-text">
+              <span class="name"></span>
+              <span class="Sistema">ERP ventas</span>
+            </div>
+          </div>
+    
+          <i class='bx bx-chevron-right toggle'></i>
+        </header>
+    
+        <div class="menu-bar">
+          <div class="menu">
+    
+            <li class="search-box">
+              <i class='bx bx-search icon'></i>
+              <input type="text" placeholder="Buscar...">
+            </li>
+    
+            <ul class="menu-links">
+              <li class="nav-link">
+                <a href="/">
+                  <i class='bx bx-home-alt icon'></i>
+                  <span class="text nav-text">Home</span>
+                </a>
+              </li>
+    
+              <li class="nav-link">
+                <a href="/registroVentas/">
+                  <i class='bx bx-bar-chart-alt-2 icon'></i>
+                  <span class="text nav-text">Registro de ventas</span>
+                </a>
+              </li>
+    
+              <li class="nav-link">
+                <a href="/listadoServicio/">
+                  <i class='bx bxs-book-content icon'></i>
+                  <span class="text nav-text">Listado de Servicio</span>
+                </a>
+              </li>
+    
+              <li class="nav-link">
+                <a href="/generarInformeVenta/">
+                  <i class='bx bx-pie-chart-alt icon'></i>
+                  <span class="text nav-text">Informe de Ventas</span>
+                </a>
+              </li>
+    
+              <li class="nav-link">
+                <a href="/listadoClientes/">
+                  <i class='bx bx-user-check icon'></i>
+                  <span class="text nav-text">Listado de Cliente</span>
+                </a>
+              </li>
+    
+            </ul>
+          </div>
+    
+          <div class="bottom-content">
+            <li class="">
+              <a href="#">
+                <i class='bx bx-log-out icon'></i>
+                <span class="text nav-text">Cerrar Sesión</span>
+              </a>
+            </li>
+    
+            <li class="mode">
+              <div class="sun-moon">
+                <i class='bx bx-moon icon moon'></i>
+                <i class='bx bx-sun icon sun'></i>
+              </div>
+              <span class="mode-text text">Modo oscuro</span>
+    
+              <div class="toggle-switch">
+                <span class="switch"></span>
+              </div>
+            </li>
+    
+          </div>
+        </div>
+      </nav>
+
+
     <div class="container">
 
         <header>
@@ -121,5 +212,7 @@
         </div>
         
     </div>
+
+    <script src="{% static 'ventas/js/prueba.js' %}"></script>
 </body>
 </html>
