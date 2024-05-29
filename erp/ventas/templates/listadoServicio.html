@@ -19,11 +19,11 @@
                 <input type = "text" id = "servicio" name = "servicio">
                 <button> Buscar Servicio</button>
         </div>   
-        
-        <div class="buttons">
-            <button>Ingresar Servicio</button>
-        </div>
-
+        <form action="/nuevoServicio/">
+            <div class="buttons">
+                <button>Ingresar Servicio</button>
+            </div>
+        </form>
         <div class = "table-container" style="overflow-y: auto; height: 450px;">
             <table>
                 <thead>
@@ -39,83 +39,29 @@
                 </thead>
 
                 <tbody>
+                    {% for s in servicios %}
                     <tr>
-                        <td>Local</td>
-                        <td>Alquiler</td>
-                        <td>A2954</td>
-                        <td>$5000.00</td>
-                        <td>$5490.00</td>
+                        <td>{{s.nombre}}</td>
+                        <td>{{s.descripcion}}</td>
+                        <td>{{s.codigo}}</td>
+                        <td>{{s.costo}}</td>
+                        <td>{{s.total}}</td>
                         <td class="icon">
                             <button class="edit-button">
-                                <img src="https://acortar.link/2XuSev" alt="Editar">
+                                <a href="{% url 'ventas:editarServicio' s.id %}">
+                                    <img src="https://acortar.link/2XuSev" alt="Editar">
+                                </a>
                             </button>
                         </td>
                         <td class="icon">
                             <button class="delete-button">
-                                <img src="https://acortar.link/49Ychz" alt="Eliminar">
+                                <a href="{% url 'ventas:eliminarServicio' s.id %}">
+                                    <img src="https://acortar.link/49Ychz" alt="Eliminar">
+                                </a>
                             </button>
                         </td>
+                        {% endfor %}
                     </tr>
-
-                    <tr>
-                        <td>Estacionamiento</td>
-                        <td>Establecimiento en la segunda planta</td>
-                        <td>B2910</td>
-                        <td>$4500.00</td>
-                        <td>$4800.00</td>
-                        <td class="icon">
-                            <button class="edit-button">
-                                <img src="https://acortar.link/2XuSev" alt="Editar">
-                            </button>
-                        </td>
-                        <td class="icon">
-                            <button class="delete-button">
-                                <img src="https://acortar.link/49Ychz" alt="Eliminar">
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td ></td>
-                        <td ></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    
-                    
                 </tbody>
             </table>
         </div>

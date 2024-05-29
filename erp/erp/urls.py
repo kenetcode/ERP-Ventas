@@ -36,4 +36,7 @@ urlpatterns = [
     
     path('editarCliente/', include('ventas.urls')),    
     path('editarClienteView/', include('ventas.urls')),
+    path('ingresarServicio/', include('ventas.urls')),
+    path('eliminarServicio/<int:id>/', include('ventas.urls')),
+     path('editarServicioView/<int:id>/', include('ventas.urls')),
 ]   

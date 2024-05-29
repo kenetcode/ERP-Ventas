@@ -13,7 +13,8 @@
         <header>
             <h1>Ingresar Nuevo Servicio</h1>
         </header>
-
+    <form action="/ingresarServicio/" method="post">
+        {% csrf_token %}
         <div class="form-grouptxt">
             <label for="name">Nombre:</label> <!--Estos serian los label-->
             <input type="text" id="name" name="name">
@@ -26,26 +27,30 @@
 
         <div class="descripcion1">
             <label for="Descripcion">Descripcion:</label>
-            <textarea id="descripcion"></textarea>
+            <textarea id="descripcion" name="descripcion"></textarea>
         </div>
         
         <div class="form-groupct">
             <label for="Costo">Costo:</label>
-            <input type="costo" id="Costo" name="Costo">
+            <input type="costo" id="costo" name="costo">
         </div>
 
         <div class="form-groupT">
             <label for="Total">Total:</label>
-            <input type="total" id="Total" name="Total">
-        </div>
-
-        <!--Luego de eso Hacemos los respectivos botones de la pantalla-->
-        <div class="cancel">
-            <button>Cancelar</button>
+            <input type="total" id="total" name="total">
         </div>
         <div class="ingress">
             <button>Ingresar Servicio</button>
         </div>
+    </form>
+        <!--Luego de eso Hacemos los respectivos botones de la pantalla-->
+        
+    <form action="/listadoServicio/">
+        {% csrf_token %}
+        <div class="cancel">
+            <button>Cancelar</button>
+        </div>
+    </form>
         
     </div>
 </body>

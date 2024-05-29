@@ -18,4 +18,7 @@ urlpatterns = [
 
     path('editarCliente/', views.editarCliente, name='editarCliente'),
     path('editarClienteView/<int:id>/', views.editarCliente_View, name='editarClienteView'),
+    path('ingresarServicio/', views.ingresarServicio, name='ingresarServicio'),
+    path('eliminarServicio/<int:id>/', views.eliminarServicio, name='eliminarServicio'),
+    path('editarServicioView/<int:id>/', views.editarServicio_View, name='editarServicio'),
 ]   

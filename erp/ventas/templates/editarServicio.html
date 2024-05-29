@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario centrado</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/newService.css' %}">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Editar Servicio</h1>
+        </header>
+        <form>
+            {% csrf_token %}
+            <div class="form-grouptxt">
+                <label for="name">Nombre:</label> <!--Estos serian los label-->
+                <input type="text" id="name" name="name" value="{{ servicios.nombre }}">
+            </div>
+            <div class="form-groupcod">
+                <label for="Codigo">Codigo:</label>
+                <input type="codigo" id="codigo" name="codigo" value="{{ servicios.codigo }}">
+            </div>
+
+            <div class="descripcion1">
+                <label for="Descripcion">Descripcion:</label>
+                <textarea id="descripcion" name="descripcion" value="{{ servicios.descripcion }}"></textarea>
+            </div>
+        
+            <div class="form-groupct">
+                <label for="Costo">Costo:</label>
+                <input type="costo" id="costo" name="costo" value="{{ servicios.costo }}">
+            </div>
+
+            <div class="form-groupT">
+                <label for="Total">Total:</label>
+                <input type="total" id="total" name="total" value="{{ servicios.total }}"
+            </div>
+            <div class="ingress">
+                <button>Ingresar Servicio</button>
+            </div>
+        </form>
+        <!--Luego de eso Hacemos los respectivos botones de la pantalla-->
+        
+        <form action="/listadoServicio/">
+            {% csrf_token %}
+            <div class="cancel">
+                <button>Cancelar</button>
+            </div>
+        </form>   
+    </div>
+</body>
+</html>

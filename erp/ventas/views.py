@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .models import Cliente
+from .models import Cliente, Servicio
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -22,7 +22,9 @@ def login_view(request):
     
 @login_required    
 def listadoServicio_View(request):
-    return render(request, 'listadoServicio.html')
+    servicio = Servicio.objects.all()
+    print(Servicio.descripcion)
+    return render(request, 'listadoServicio.html', {'servicios': servicio})
 
 @login_required 
 def newService_View(request):
@@ -112,3 +114,28 @@ def editarCliente(request):
 def editarCliente_View(request, id):
     cliente = Cliente.objects.get(id=id)
     return render(request, 'editarCliente.html', {'cliente': cliente})
+
+@login_required
+def ingresarServicio(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('name')
+        codigo = request.POST.get('codigo')
+        descripcion = request.POST.get('descripcion')
+        costo = request.POST.get('costo')
+        total = request.POST.get('total')
+        Servicio.objects.create(nombre=nombre, descripcion=descripcion, codigo=codigo, costo=costo, total=total)
+        return redirect('listadoServicio/')
+    else:
+        return redirect('listadoServicio/')
+
+@login_required
+def eliminarServicio(request, id):
+    servicio = Servicio.objects.get(id=id)
+    servicio.delete()
+    return redirect('/listadoServicio/')
+
+def editarServicio_View(request, id):
+    servicio = Servicio.objects.get(id=id)
+    return render(request, 'editarServicio.html', {'servicios': servicio})
+    
+
