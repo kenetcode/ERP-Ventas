@@ -45,6 +45,18 @@ body {
     margin: 0 auto 20px;
 }
 
+.login-right h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color: steelblue;
+}
+
+.login-container p{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color: steelblue;
+    font-weight: bold;
+}
 .session-expired {
     background-color: #ffecec;
     color: #e74c3c;

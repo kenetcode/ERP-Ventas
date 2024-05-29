@@ -8,16 +8,21 @@
     <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/loginK.css' %}">
 </head>
 <body>
+    
     <div class="login-container">
         <div class="login-left">
             <img src="https://acortar.link/ubDXGO" alt="Statue">
         </div>
         <div class="login-right">
+            <h1>INICIAR SESION</h1>
             <img src="https://acortar.link/tsgTwE" class="logo">
+            {% if error %}
+                <p>{{ error }}</p>
+            {% endif %}
             <form action="#" method="POST">
-                <input type="text" name="username" placeholder="Nombre de usuario" >
-                <input type="password" name="password" placeholder="Contraseña">
-                <a href="#" class="forgot-link">¿Olvidó su nombre de usuario o contraseña?</a>
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Nombre de usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
                 <button type="submit" class="login-button">Acceder</button>
             </form>
         </div>
