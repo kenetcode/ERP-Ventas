@@ -1,88 +1,170 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Listado de Servicio</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'ventas/css/listadoServicio.css' %}"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>Listado de Clientes</h1>
-      </header>
 
-      <form action="/consultaClientes/" method="post">
-        {% csrf_token %}
-        <div class="search-bar">
-          <label for="Cliente">Nombre:</label>
-          <input
-            type="text"
-            id="cliente"
-            name="nombre"
-            ,
-            placeholder="Buscar"
-          />
-          <button type="submit">Buscar</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Listado de Servicio</title>
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'ventas/css/listadoClientes.css' %}">
+  <link rel="stylesheet" href="{% static 'ventas/css/home.css' %}">
+  
+</head>
+<body>
+
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="https://acortar.link/ImyhM4" alt="">
+        </span>
+
+        <div class="text logo-text">
+          <span class="name"></span>
+          <span class="Sistema">ERP ventas</span>
         </div>
-      </form>
+      </div>
 
-      <form action="/ingresarclienteview/">
+      <i class='bx bx-chevron-right toggle'></i>
+    </header>
 
-        <div class="buttons">
-          <button>Nuevo</button>
-        </div>
+    <div class="menu-bar">
+      <div class="menu">
 
-      </form>
+        <li class="search-box">
+          <i class='bx bx-search icon'></i>
+          <input type="text" placeholder="Buscar...">
+        </li>
 
-      <div class="table-container" style="overflow-y: auto; height: 450px">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Dirreccion</th>
-              <th>telefono</th>
-              <th>Email</th>
-              <th>Nombre Comercial</th>
-              <th>tipo de Cliente</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
-            </tr>
-          </thead>
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="/">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Home</span>
+            </a>
+          </li>
 
-          <tbody>
-            {% for cliente in clientes %}
-            <tr>
-              <td>{{cliente.nombre}}</td>
-              <td>{{cliente.direccion}}</td>
-              <td>{{cliente.telefono}}</td>
-              <td>{{cliente.email}}</td>
-              <td>{{cliente.nombrecomercial}}</td>
-              <td>{{cliente.tipocliente}}</td>
-              <td class="icon">
-                <button class="edit-button">
-                  <a href="{% url 'ventas:editarClienteView' cliente.id %}">
-                    <img src="https://acortar.link/2XuSev" alt="Editar" />
-                  </a>
-                </button>
-              </td>
-              <td class="icon">
-                <button class="delete-button">
-                  <a href="{% url 'ventas:eliminarCliente' cliente.id %}"
-                    ><img src="https://acortar.link/49Ychz" alt="Eliminar"
-                  /></a>
-                </button>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-bar-chart-alt-2 icon'></i>
+              <span class="text nav-text">Registro de ventas</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bxs-book-content icon'></i>
+              <span class="text nav-text">Listado de Servicio</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-pie-chart-alt icon'></i>
+              <span class="text nav-text">Informe de Ventas</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="/listadoClientes/">
+              <i class='bx bx-user-check icon'></i>
+              <span class="text nav-text">Listado de Cliente</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="bottom-content">
+        <li class="">
+          <a href="#">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">Cerrar Sesión</span>
+          </a>
+        </li>
+
+        <li class="mode">
+          <div class="sun-moon">
+            <i class='bx bx-moon icon moon'></i>
+            <i class='bx bx-sun icon sun'></i>
+          </div>
+          <span class="mode-text text">Modo oscuro</span>
+
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+
       </div>
     </div>
-  </body>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1>Listado de Clientes</h1>
+    </header>
+
+    <form action="/consultaClientes/" method="post">
+      {% csrf_token %}
+      <div class="search-bar">
+        <label for="Cliente">Nombre:</label>
+        <input type="text" id="cliente" name="nombre" , placeholder="Buscar" />
+        <button type="submit">Buscar</button>
+      </div>
+    </form>
+
+    <form action="/ingresarclienteview/">
+
+      <div class="buttons">
+        <button>Nuevo</button>
+      </div>
+
+    </form>
+
+    <div class="table-container" style="overflow-y: auto; height: 450px">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Dirreccion</th>
+            <th>telefono</th>
+            <th>Email</th>
+            <th>Nombre Comercial</th>
+            <th>tipo de Cliente</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for cliente in clientes %}
+          <tr>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.direccion}}</td>
+            <td>{{cliente.telefono}}</td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.nombrecomercial}}</td>
+            <td>{{cliente.tipocliente}}</td>
+            <td class="icon">
+              <button class="edit-button">
+                <a href="{% url 'ventas:editarClienteView' cliente.id %}">
+                  <img src="https://acortar.link/2XuSev" alt="Editar" />
+                </a>
+              </button>
+            </td>
+            <td class="icon">
+              <button class="delete-button">
+                <a href="{% url 'ventas:eliminarCliente' cliente.id %}"><img src="https://acortar.link/49Ychz"
+                    alt="Eliminar" /></a>
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="{% static 'ventas/js/prueba.js' %}"></script>
+</body>
 </html>

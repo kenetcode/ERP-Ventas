@@ -4,7 +4,7 @@ from .models import Cliente
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-def home(request):
+def home_view(request):
     return render(request, 'home.html')
 
 def login_view(request):
