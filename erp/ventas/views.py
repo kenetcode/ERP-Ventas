@@ -49,7 +49,7 @@ def ingresarCliente(request):
         direccion = request.POST.get('direccion')
         cliente = Cliente(nombre=name, tipocliente=tipocliente, nombrecomercial=nombrecomercial, telefono=telefono, email=email, direccion=direccion)
         cliente.save()
-        return redirect('/ingresarclienteview/')
+        return redirect('/listadoClientes/')
 
 @login_required
 def ingresarCliente_View(request):
@@ -86,3 +86,29 @@ def menuAdministrador_View(request):
 def generarFactura_View(request):
     return render(request, 'generarFactura.html')
 
+
+@login_required
+def editarCliente(request):
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        cliente = Cliente.objects.get(id=id)
+        name = request.POST.get('name')
+        tipocliente = request.POST.get('tipo-cliente')
+        nombrecomercial = request.POST.get('nameComercial')
+        telefono = request.POST.get('telefono')
+        email = request.POST.get('email')
+        direccion = request.POST.get('direccion')
+        cliente.nombre = name
+        cliente.tipocliente = tipocliente
+        cliente.nombrecomercial = nombrecomercial
+        cliente.telefono = telefono
+        cliente.email = email
+        cliente.direccion = direccion
+        cliente.save()
+        return redirect('/listadoClientes/')
+    return render(request, 'editarCliente.html', {'cliente': cliente})
+
+@login_required
+def editarCliente_View(request, id):
+    cliente = Cliente.objects.get(id=id)
+    return render(request, 'editarCliente.html', {'cliente': cliente})

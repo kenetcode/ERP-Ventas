@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modificar Cliente</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'ventas/css/ingresarCliente.css' %}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Modificar Cliente</h1>
+      </header>
+      <form action="/editarCliente/" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" name="name" value="{{ cliente.nombre }}"  />
+        </div>
+
+        <label for="tipo-cliente" id="label-tipo-cliente">Tipo de Cliente:</label>
+        <select id="tipo-cliente" name="tipo-cliente">
+            <option value="empresa" {% if cliente.tipo_cliente == 'empresa' %}selected{% endif %}>Empresa</option>
+            <option value="persona" {% if cliente.tipo_cliente == 'persona' %}selected{% endif %}>Persona</option>
+        </select>
+
+        <div class="form-group">
+          <label for="nameComercial">Nombre Comercial:</label>
+          <input type="text" id="nameComercial" name="nameComercial" value="{{ cliente.nombrecomercial }}" />
+        </div>
+
+        <div class="form-group">
+          <label for="direccion">Direccion:</label>
+          <input type="text" id="direccion" name="direccion" value="{{ cliente.direccion }}" />
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Telefono:</label>
+          <input type="text" id="telefono" name="telefono" value="{{ cliente.telefono }}" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" value="{{ cliente.email }}" />
+        </div>
+
+        <div class="form-group">
+          <input type="text" id="id" name="id" value="{{ cliente.id }}" hidden = false />
+        </div>
+
+        <!--Luego de eso Hacemos los respectivos botones de la pantalla-->
+        <div class="cancel">
+          <button>Cancelar</button>
+        </div>
+        <div class="guardar">
+          <button>Guardar</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

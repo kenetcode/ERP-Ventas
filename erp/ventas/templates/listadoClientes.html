@@ -20,7 +20,7 @@
       <form action="/consultaClientes/" method="post">
         {% csrf_token %}
         <div class="search-bar">
-          <label for="Cliente">Cliente:</label>
+          <label for="Cliente">Nombre:</label>
           <input
             type="text"
             id="cliente"
@@ -32,9 +32,13 @@
         </div>
       </form>
 
-      <div class="buttons">
-        <button>Nuevo</button>
-      </div>
+      <form action="/ingresarclienteview/">
+
+        <div class="buttons">
+          <button>Nuevo</button>
+        </div>
+
+      </form>
 
       <div class="table-container" style="overflow-y: auto; height: 450px">
         <table>
@@ -62,7 +66,9 @@
               <td>{{cliente.tipocliente}}</td>
               <td class="icon">
                 <button class="edit-button">
-                  <img src="https://acortar.link/2XuSev" alt="Editar" />
+                  <a href="{% url 'ventas:editarClienteView' cliente.id %}">
+                    <img src="https://acortar.link/2XuSev" alt="Editar" />
+                  </a>
                 </button>
               </td>
               <td class="icon">
