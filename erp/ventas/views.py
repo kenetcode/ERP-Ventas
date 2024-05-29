@@ -65,6 +65,8 @@ def eliminarCliente(request, id):
 def consultarCliente(request):
     if request.method == 'POST':
         name = request.POST.get('nombre')
+        if(name == ''):
+            return redirect('/listadoClientes/')
         cliente = Cliente.objects.filter(nombre=name)
         return render(request, 'listadoClientes.html', {'clientes': cliente})
 
