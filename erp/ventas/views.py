@@ -137,5 +137,33 @@ def eliminarServicio(request, id):
 def editarServicio_View(request, id):
     servicio = Servicio.objects.get(id=id)
     return render(request, 'editarServicio.html', {'servicios': servicio})
+
+def editarServicio(request):
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        servicio = Servicio.objects.get(id=id)
+        nombre = request.POST.get('name')
+        codigo = request.POST.get('codigo')
+        descripcion = request.POST.get('descripcion')
+        costo = request.POST.get('costo')
+        total = request.POST.get('total')
+        servicio.nombre = nombre
+        servicio.descripcion = descripcion
+        servicio.codigo = codigo
+        servicio.costo = costo
+        servicio.total = total
+        servicio.save()
+        return redirect('/listadoServicio/')
+    return render(request, 'editarServicio.html', {'servicios': servicio})
+
+def buscarServicio(request):
+    if request.method == 'POST':
+        buscar = request.POST.get('servicio')
+        if(buscar==""):
+            return redirect('/listadoServicio/')
+        else:
+            servicio = Servicio.objects.filter(nombre=buscar)
+            return render(request, 'listadoServicio.html', {'servicios': servicio})
+    
     
 

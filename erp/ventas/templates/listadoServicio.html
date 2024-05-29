@@ -13,12 +13,14 @@
         <header>
             <h1>Listado de Servicios</h1>
         </header>
-
-        <div class = "search-bar">
+        <form action="/buscarServicio/" method="post">{% csrf_token %}
+            <div class = "search-bar">
                 <label for = "Servicio">Servicio:</label>
                 <input type = "text" id = "servicio" name = "servicio">
                 <button> Buscar Servicio</button>
-        </div>   
+            </div>   
+        </form>
+        
         <form action="/nuevoServicio/">
             <div class="buttons">
                 <button>Ingresar Servicio</button>
@@ -48,7 +50,7 @@
                         <td>{{s.total}}</td>
                         <td class="icon">
                             <button class="edit-button">
-                                <a href="{% url 'ventas:editarServicio' s.id %}">
+                                <a href="{% url 'ventas:editarServicioView' s.id %}">
                                     <img src="https://acortar.link/2XuSev" alt="Editar">
                                 </a>
                             </button>
