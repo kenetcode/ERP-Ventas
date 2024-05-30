@@ -17,15 +17,12 @@ class Cliente(models.Model):
 class Servicio(models.Model):
     nombre = models.CharField(max_length=255)
     descripcion = models.TextField()
-    codigo = models.CharField(max_length=255)
     costo = models.FloatField()
     
 
 class Venta(models.Model):
     fecha = models.DateField()
-    cantidad = models.IntegerField()
     metodopago = models.CharField(max_length=255)
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     servicio = models.ManyToManyField(Servicio)
     total = models.FloatField()
