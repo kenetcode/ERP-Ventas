@@ -73,10 +73,6 @@ def consultarCliente(request):
         return render(request, 'listadoClientes.html', {'clientes': cliente})
 
 @login_required 
-def generarInformeVenta_View(request):
-    return render(request, 'generarInformeVenta.html')
-
-@login_required 
 def agregarModificarVenta_View(request):
     return render(request, 'agregarModificarVenta.html')
 

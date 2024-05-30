@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,13 +62,6 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="/generarInformeVenta/">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Informe de Ventas</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
                         <a href="/listadoClientes/">
                             <i class='bx bx-user-check icon'></i>
                             <span class="text nav-text">Listado de Cliente</span>
@@ -112,8 +105,6 @@
         </span>
     </div>
 
-
-
-    <script src="static/ventas/js/prueba.js"></script> <!--Url para llamar la ruta del javascrip-->
+    <script src="{% static 'ventas/js/prueba.js' %}"></script>
 </body>
 </html>
