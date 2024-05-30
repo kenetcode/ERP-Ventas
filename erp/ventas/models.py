@@ -19,16 +19,16 @@ class Servicio(models.Model):
     descripcion = models.TextField()
     codigo = models.CharField(max_length=255)
     costo = models.FloatField()
-    total = models.FloatField()
+    
 
 class Venta(models.Model):
     fecha = models.DateField()
     cantidad = models.IntegerField()
-    precio = models.FloatField()
     metodopago = models.CharField(max_length=255)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     servicio = models.ManyToManyField(Servicio)
+    total = models.FloatField()
 
 class Factura(models.Model):
     numerofactura = models.IntegerField()
