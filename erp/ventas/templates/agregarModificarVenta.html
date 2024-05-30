@@ -4,83 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Factura</title>
+    <title>Ingresar Venta - Modificar Venta</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/agregarModificarVenta.css' %}">
 </head>
 <body>
-    <form>
-        <div class="container">
-            <div class="tittle">
-                <h1>Agregar/Modificar Venta</h1>
-            </div>
-            <div class="header">
-                <div class="form-group">
-                    <label for="cliente">Cliente:</label>
-                    <select id="cliente">
-                        <option value="">Seleccionar</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="fecha">Fecha:</label>
-                    <input type="date" id="fecha">
-                </div>
-                <div class="header-buttons">
-                    <button type="button" class="save-button">Guardar</button>
-                    <button type="button" class="cancel-button">Cancelar</button>
-                </div>
-            </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Servicio</th>
-                        <th>Descripción</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Alquiler</td>
-                        <td>Contrato de local</td>
-                        <td>1</td>
-                        <td>$1500.00</td>
-                        <td><button type="button" class="delete-button">🗑️</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="add-line">Añadir línea</button>
-
-            <div class="footer">
-                <label for="metodo-pago">Método de Pago:</label>
-                <select id="metodo-pago">
-                    <option value="">Seleccionar</option>
-                </select>
-                <button type="button" class="generate-invoice">Generar Factura</button>
-            </div>
-
-            <div class="summary">
-                <table>
-                    <tr>
-                        <td>Subtotal:</td>
-                        <td>$1500.00</td>
-                    </tr>
-                    <tr>
-                        <td>Coste:</td>
-                        <td>$1000.00</td>
-                    </tr>
-                    <tr>
-                        <td>IVA:</td>
-                        <td>$195</td>
-                    </tr>
-                    <tr>
-                        <td>Total:</td>
-                        <td>$1695</td>
-                    </tr>
-                </table>
-            </div>
+    <div class="container">
+        <h1>Ingresar Venta - Modificar Venta</h1>
+        <div class="form-group">
+            <label for="cliente">Cliente:</label>
+            <select id="cliente">
+                <option>Seleccionar</option>
+            </select>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" value="2024-04-14">
+            <label for="metodoPago">Método de Pago:</label>
+            <select id="metodoPago">
+                <option>Seleccionar</option>
+            </select>
         </div>
-    </form>
+        <div class="form-group">
+            <label for="servicio">Servicio:</label>
+            <select id="servicio">
+                <option>Seleccionar</option>
+            </select>
+            <button id="agregarServicio">Agregar Servicio</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Alquiler</td>
+                    <td>Contrato de local</td>
+                    <td>$1500.00</td>
+                    <td class="icon">
+                        <button class="delete-button">
+                          <img src="https://acortar.link/49Ychz" alt="Eliminar" /></a>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="totals">
+            <tbody>
+                <tr>
+                    <td>Subtotal:</td>
+                    <td>$1500.00</td>
+                </tr>
+                <tr>
+                    <td>IVA:</td>
+                    <td>$195</td>
+                </tr>
+                <tr>
+                    <td>Total:</td>
+                    <td>$1695</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="buttons">
+            <button id="guardar">Guardar</button>
+            <button id="cancelar">Cancelar</button>
+        </div>
+    </div>
 </body>
 </html>
