@@ -121,10 +121,8 @@ def editarCliente_View(request, id):
 def ingresarServicio(request):
     if request.method == 'POST':
         nombre = request.POST.get('name')
-        codigo = request.POST.get('codigo')
         descripcion = request.POST.get('descripcion')
         costo = request.POST.get('costo')
-        total = request.POST.get('total')
         Servicio.objects.create(nombre=nombre, descripcion=descripcion, costo=costo)
         return redirect('listadoServicio/')
     else:
