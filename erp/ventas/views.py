@@ -125,7 +125,7 @@ def ingresarServicio(request):
         descripcion = request.POST.get('descripcion')
         costo = request.POST.get('costo')
         total = request.POST.get('total')
-        Servicio.objects.create(nombre=nombre, descripcion=descripcion, codigo=codigo, costo=costo, total=total)
+        Servicio.objects.create(nombre=nombre, descripcion=descripcion, costo=costo)
         return redirect('listadoServicio/')
     else:
         return redirect('listadoServicio/')
@@ -145,15 +145,11 @@ def editarServicio(request):
         id = request.POST.get('id')
         servicio = Servicio.objects.get(id=id)
         nombre = request.POST.get('name')
-        codigo = request.POST.get('codigo')
         descripcion = request.POST.get('descripcion')
         costo = request.POST.get('costo')
-        total = request.POST.get('total')
         servicio.nombre = nombre
         servicio.descripcion = descripcion
-        servicio.codigo = codigo
         servicio.costo = costo
-        servicio.total = total
         servicio.save()
         return redirect('/listadoServicio/')
     return render(request, 'editarServicio.html', {'servicios': servicio})
