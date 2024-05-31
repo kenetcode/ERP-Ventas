@@ -75,7 +75,11 @@
             </tbody>
         </table>
         <div class="buttons">
-            <button id="guardar">Guardar</button>
+            <form action="agregarModificarVenta/" method="POST"> #falta modificar
+                {% csrf_token %}
+                <button id="guardar">Guardar</button>
+            </form>
+            
             <button id="cancelar">Cancelar</button>
         </div>
     </div>

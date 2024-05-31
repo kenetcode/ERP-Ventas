@@ -25,5 +25,6 @@ urlpatterns = [
     path('generarFactura/', views.generarFactura_View, name='generarFactura'),
 
     path('obtener_servicio/<int:servicio_id>/', views.obtener_servicio, name='obtener_servicio'),
+    path('agregarModificarVenta/', views.agregarModificarVenta_View, name='agregarModificarVenta'), #nueva url
 
 ]   

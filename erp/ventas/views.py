@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Cliente, Servicio
+from .models import Cliente, Servicio, Venta
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -78,6 +78,23 @@ def agregarModificarVenta_View(request):
     clientes = Cliente.objects.all()
     servicios = Servicio.objects.all()
     return render(request, 'agregarModificarVenta.html', {'clientes': clientes, 'servicios': servicios})
+
+@login_required
+def agregarModificarVenta(request): #Nuevo metodo
+    if request.method == 'POST':
+        fecha = request.POST.get('fecha')
+        metodopago = request.POST.get('metodopago')
+        cliente = Cliente.objects.get(id=request.POST.get('cliente'))
+        servicios = request.POST.getlist('servicios')
+        total = 0
+        for servicio in servicios:
+            total += Servicio.objects.get(id=servicio).costo
+        venta = Venta(fecha=fecha, metodopago=metodopago, cliente=cliente, total=total)
+        venta.save()
+        for servicio in servicios:
+            venta.servicio.add(Servicio.objects.get(id=servicio))
+        return redirect('/generarFactura/')
+    return redirect('/agregarModificarVenta/')
 
 def obtener_servicio(request, servicio_id):
     servicio = get_object_or_404(Servicio, pk=servicio_id)
