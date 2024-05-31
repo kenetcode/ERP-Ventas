@@ -99,6 +99,8 @@ th {
 
 .buttons {
     text-align: center;
+    justify-content: center;
+    margin-top: -27px; /* Espacio superior */
 }
 
 #guardar, #cancelar {
@@ -111,12 +113,16 @@ th {
     background-color: purple;
     color: white;
     border: none;
+    margin-left: 80px;
+    margin-top: -150px;
 }
 
 #cancelar {
     background-color: #f44336;
     color: white;
     border: none;
+    margin-left: -300px;
+    margin-top: -10px;
 }
 
 .icon button{ /*Al momento de pasar el cursor en la imagen se cambia el cursor*/

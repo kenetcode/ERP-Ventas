@@ -59,7 +59,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #aa8caf;
 }
 
 th, td {
@@ -69,7 +69,7 @@ th, td {
 }
 
 th {
-    background-color: yellow;
+    background-color: #aa8caf;
 }
 
 .edit-btn, .delete-btn {
