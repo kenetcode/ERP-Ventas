@@ -35,7 +35,7 @@
             <select id="servicio" name="servicio">
                 <option>Seleccionar</option>
                 {% for servicio in servicios %}
-                <option value="{{ servicio.nombre }}">{{ servicio.nombre }}</option>
+                <option value="{{ servicio.id }}">{{ servicio.nombre }}</option>
                 {% endfor %}
             </select>
             <button id="agregarServicio">Agregar Servicio</button>
@@ -49,16 +49,9 @@
                     <th>Eliminar</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="serviciosTableBody">
                 <tr>
-                    <td>Alquiler</td>
-                    <td>Contrato de local</td>
-                    <td>$1500.00</td>
-                    <td class="icon">
-                        <button class="delete-button">
-                            <img src="https://acortar.link/49Ychz" alt="Eliminar" /></a>
-                        </button>
-                    </td>
+                
                 </tr>
             </tbody>
         </table>
@@ -83,6 +76,60 @@
             <button id="cancelar">Cancelar</button>
         </div>
     </div>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#agregarServicio').click(function (e) {
+                e.preventDefault();
+                var servicio_id = $('#servicio').val();
+                $.ajax({
+                    url: 'obtener_servicio/' + servicio_id + '/',
+                    method: 'GET',
+                    success: function (data) {
+                        var table = $('table:first > tbody');
+                        var row = '<tr><td>' + data.nombre + '</td><td>' + data.descripcion + '</td><td>' + data.costo + '</td><td class="icon"><button class="delete-button"><img src="https://acortar.link/49Ychz" alt="Eliminar" /></button></td></tr>';
+                        table.append(row);
+                    }
+                });
+            });
+        });
+    </script>-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#agregarServicio').click(function (e) {
+                e.preventDefault();
+                var servicio_id = $('#servicio').val();
+                
+                // Verifica que el servicio_id sea un número válido
+                if (isNaN(servicio_id) || servicio_id === "Seleccionar") {
+                    alert('Por favor selecciona un servicio válido.');
+                    return;
+                }
+
+                $.ajax({
+                    url: '/obtener_servicio/' + servicio_id + '/',
+                    method: 'GET',
+                    success: function (data) {
+                        var table = $('#serviciosTableBody');
+                        var row = '<tr><td>' + data.nombre + '</td><td>' + data.descripcion + '</td><td>' + data.precio + '</td><td class="icon"><button class="delete-button"><img src="https://acortar.link/49Ychz" alt="Eliminar" /></button></td></tr>';
+                        table.append(row);
+                    }
+                });
+            });
+
+            $(document).on('click', '.delete-button', function () {
+                $(this).closest('tr').remove();
+            });
+
+            //$('#servicio').val($('#servicio option:first').val()); arreglar esto
+        });
+
+    </script>
+
 </body>
 
 </html>

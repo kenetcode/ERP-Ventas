@@ -40,4 +40,5 @@ urlpatterns = [
     path('editarServicioView/<int:id>/', include('ventas.urls')),
     path('editarServicio/', include('ventas.urls')),
     path('buscarServicio/', include('ventas.urls')),
+    path('obtener_servicio/<int:servicio_id>/', include('ventas.urls')),
 ]   

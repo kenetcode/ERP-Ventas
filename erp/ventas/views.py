@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Cliente, Servicio
 from django.contrib.auth.decorators import login_required
 
@@ -77,6 +78,11 @@ def agregarModificarVenta_View(request):
     clientes = Cliente.objects.all()
     servicios = Servicio.objects.all()
     return render(request, 'agregarModificarVenta.html', {'clientes': clientes, 'servicios': servicios})
+
+def obtener_servicio(request, servicio_id):
+    servicio = get_object_or_404(Servicio, pk=servicio_id)
+    data = {'nombre': servicio.nombre, 'descripcion': servicio.descripcion, 'precio': servicio.costo}
+    return JsonResponse(data)
 
 @login_required 
 def menuGestor_View(request):
