@@ -91,9 +91,12 @@
         <header>
             <h1>Registro de Ventas</h1>
             <div class="search-container">
-                <label for="cliente">Nombre Cliente:</label>
-                <input type="text" id="cliente" name="cliente">
-                <button>Buscar</button>
+                <form action="/buscarVenta/" method="POST">
+                  {% csrf_token %}
+                  <label for="cliente">Nombre Cliente:</label>
+                  <input type="text" id="cliente" name="cliente">
+                  <button>Buscar</button>
+                </form>
                 <form action="/agregarModificarVenta_View/">
                   <button class="new-sale">Nueva Venta</button>
                 </form>
@@ -109,28 +112,14 @@
                 </tr>
             </thead>
             <tbody>
+              {% for v in venta %}
                 <tr>
-                    <td>Carlos rauda</td>
-                    <td>12/08/2024</td>
-                    <td>CuerpoMatic</td>
-                    <td>$1500</td>
+                    <td>{{v.cliente.nombre}}</td>
+                    <td>{{v.fecha}}</td>
+                    <td>{{v.metodopago}}</td>
+                    <td>{{v.total}}</td>
                 </tr>
-              </tbody>
-               <tbody>
-                <tr>
-                    <td>Kike </td>
-                    <td>12/08/2024</td>
-                    <td>dulces</td>
-                    <td>$1</td>
-                </tr>
-                 </tbody>
-                  <tbody>
-                <tr>
-                    <td>benitez samayoa</td>
-                    <td>12/08/2024</td>
-                    <td>Parciales</td>
-                    <td>$15000</td>
-                </tr>
+              {% endfor %}
             </tbody>
         </table>
       </div>

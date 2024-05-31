@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Cliente, Servicio, Venta
 from django.contrib.auth.decorators import login_required
@@ -33,7 +33,8 @@ def newService_View(request):
 
 @login_required 
 def registroVentas_View(request):
-    return render(request, 'registroVentas.html')
+    venta = Venta.objects.all()
+    return render(request, 'registroVentas.html',{'venta':venta})
 
 @login_required 
 def listadoClientes_View(request):
@@ -176,5 +177,15 @@ def buscarServicio(request):
             servicio = Servicio.objects.filter(nombre=buscar)
             return render(request, 'listadoServicio.html', {'servicios': servicio})
     
-    
-
+def buscarVenta(request):
+    if request.method == 'POST':
+        buscar = request.POST.get('cliente')
+        if(buscar==""):
+            return redirect('/registroVentas/')
+        else:
+            try:
+                cliente = Cliente.objects.get(nombre=buscar)
+                venta = Venta.objects.filter(cliente=cliente.id)
+                return render(request, 'registroVentas.html', {'venta': venta}) 
+            except:
+                return HttpResponse('Se ha producido un error, existen nombres iguales de clientes diferentes.',content_type='text/plain', status=404)
