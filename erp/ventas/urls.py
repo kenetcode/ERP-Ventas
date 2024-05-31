@@ -8,7 +8,7 @@ urlpatterns = [
     path('nuevoServicio/', views.newService_View, name = 'nuevoServicio'),
     path('registroVentas/', views.registroVentas_View, name='registroVentas'),
     path('menuGestor/', views.menuGestor_View, name='menuGestor'),
-    path('agregarModificarVenta/', views.agregarModificarVenta_View, name='agregarModificarVenta'),
+    path('agregarModificarVenta_View/', views.agregarModificarVenta_View, name='agregarModificarVenta_View'),
     path('listadoClientes/', views.listadoClientes_View, name='listadoClientes'),
     path('consultaClientes/', views.consultarCliente, name='consultaClientes'),
     path('ingresarCliente/', views.ingresarCliente, name='ingresarCliente'),
@@ -25,6 +25,6 @@ urlpatterns = [
     path('generarFactura/', views.generarFactura_View, name='generarFactura'),
 
     path('obtener_servicio/<int:servicio_id>/', views.obtener_servicio, name='obtener_servicio'),
-    path('agregarModificarVenta/', views.agregarModificarVenta_View, name='agregarModificarVenta'), #nueva url
+    path('agregarModificarVenta/', views.agregarModificarVenta, name='agregarModificarVenta'), #nueva url
 
 ]   

@@ -13,84 +13,87 @@
 <body>
     <div class="container">
         <h1>Ingresar Venta - Modificar Venta</h1>
-        <div class="form-group">
-            <label for="cliente">Cliente:</label>
-            <select id="cliente" name="cliente">
-                <option>Seleccionar</option>
-                {% for cliente in clientes %}
-                <option value="{{ cliente.nombre }}">{{ cliente.nombre }}</option>
-                {% endfor %}
-            </select>
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" value="2024-04-14">
-            <label for="metodoPago">Método de Pago:</label>
-            <select id="metodoPago">
-                <option>Seleccionar</option>
-                <option value="efectivo">Efectivo</option>
-                <option value="tarjeta">Tarjeta</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="servicio">Servicio:</label>
-            <select id="servicio" name="servicio">
-                <option>Seleccionar</option>
-                {% for servicio in servicios %}
-                <option value="{{ servicio.id }}">{{ servicio.nombre }}</option>
-                {% endfor %}
-            </select>
-            <button id="agregarServicio">Agregar Servicio</button>
-        </div>
-        <!--style="overflow-y: auto; height: 200px"-->
-        <div style="overflow-y: auto; height: 200px">
-            <table>
-                <thead>
+        <form action="agregarModificarVenta/" method="POST"> <!--falta modificar-->
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="cliente">Cliente:</label>
+                <select id="cliente" name="cliente">
+                    <option>Seleccionar</option>
+                    {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">{{ cliente.nombre }}</option>
+                    {% endfor %}
+                </select>
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha">
+                <label for="metodopago">Método de Pago:</label>
+                <select id="metodopago" name="metodopago">
+                    <option>Seleccionar</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="tarjeta">Tarjeta</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="servicio">Servicio:</label>
+                <select id="servicio" name="servicio">
+                    <option>Seleccionar</option>
+                    {% for servicio in servicios %}
+                    <option value="{{ servicio.id }}">{{ servicio.nombre }}</option>
+                    {% endfor %}
+                </select>
+                <button id="agregarServicio">Agregar Servicio</button>
+            </div>
+            <!--style="overflow-y: auto; height: 200px"-->
+            <div style="overflow-y: auto; height: 200px">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="serviciosTableBody">
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <table class="totals">
+                <tbody id="totalventa">
                     <tr>
-                        <th>Servicio</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                        <th>Eliminar</th>
+                        <td>Subtotal:</td>
+                        <td>0</td>
                     </tr>
-                </thead>
-                <tbody id="serviciosTableBody">
                     <tr>
-                    
+                        <td>IVA:</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Total:</td>
+                        <td>0</td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <table class="totals">
-            <tbody id="totalventa">
-                <tr>
-                    <td>Subtotal:</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>IVA:</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>Total:</td>
-                    <td>0</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="buttons">
-            <form action="agregarModificarVenta/" method="POST"> #falta modificar
+            <div class="buttons">
                 {% csrf_token %}
                 <button id="guardar">Guardar</button>
-            </form>
-            
+            </div>
+        </form>
+
+        <div class="buttons">
             <button id="cancelar">Cancelar</button>
         </div>
     </div>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#agregarServicio').click(function (e) {
                 e.preventDefault();
                 var servicio_id = $('#servicio').val();
-                
+
                 // Verifica que el servicio_id sea un número válido
                 if (isNaN(servicio_id) || servicio_id === "Seleccionar") {
                     alert('Por favor selecciona un servicio válido.');
@@ -111,35 +114,52 @@
                         var subtotalCalc = parseFloat(data.precio) + parseFloat(secondCellValue);
                         subtotal.find('td:eq(1)').text(subtotalCalc.toFixed(2));
                         var iva = tableTotal.find('tr:eq(1)');
-                        var ivaCalc = parseFloat(subtotalCalc)*(0.13);
-                        iva.find('td:eq(1)').text(ivaCalc.toFixed(2));                       
+                        var ivaCalc = parseFloat(subtotalCalc) * (0.13);
+                        iva.find('td:eq(1)').text(ivaCalc.toFixed(2));
                         var total = tableTotal.find('tr:eq(2)');
                         var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
-                        total.find('td:eq(1)').text(totalCalc.toFixed(2)); 
+                        total.find('td:eq(1)').text(totalCalc.toFixed(2));
                     }
                 });
-                $('#servicio').val($('#servicio option:first').val());               
+                $('#servicio').val($('#servicio option:first').val());
             });
 
             $(document).on('click', '.delete-button', function () {
-                $(this).closest('tr').find('td:eq(2)').each(function() {
+                $(this).closest('tr').find('td:eq(2)').each(function () {
                     var contenidoCelda = $(this).text();
                     var tableTotal = $('#totalventa');
                     var subtotal = tableTotal.find('tr:first');
                     var secondCellValue = subtotal.find('td:eq(1)').text();
-                    var subtotalCalc = parseFloat(secondCellValue)-parseFloat(contenidoCelda);
+                    var subtotalCalc = parseFloat(secondCellValue) - parseFloat(contenidoCelda);
                     subtotal.find('td:eq(1)').text(subtotalCalc.toFixed(2));
                     var iva = tableTotal.find('tr:eq(1)');
-                    var ivaCalc = parseFloat(subtotalCalc)*(0.13);
-                    iva.find('td:eq(1)').text(ivaCalc.toFixed(2));                       
+                    var ivaCalc = parseFloat(subtotalCalc) * (0.13);
+                    iva.find('td:eq(1)').text(ivaCalc.toFixed(2));
                     var total = tableTotal.find('tr:eq(2)');
                     var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
-                    total.find('td:eq(1)').text(totalCalc.toFixed(2)); 
+                    total.find('td:eq(1)').text(totalCalc.toFixed(2));
                 });
                 $(this).closest('tr').remove();
             });
 
-            
+            $('#guardar').click(function (e) {
+                e.preventDefault();
+
+                var total = $('#totalventa').find('tr:eq(2)').find('td:eq(1)').text();
+                var formData = $('form').serialize() + '&total=' + total;
+
+                $.ajax({
+                    url: '/agregarModificarVenta/',
+                    method: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        // Aquí puedes manejar la respuesta del servidor
+                        window.location.href = "/generarFactura/";
+                    }
+                });
+            });
+
+
         });
 
 

@@ -85,16 +85,10 @@ def agregarModificarVenta(request): #Nuevo metodo
         fecha = request.POST.get('fecha')
         metodopago = request.POST.get('metodopago')
         cliente = Cliente.objects.get(id=request.POST.get('cliente'))
-        servicios = request.POST.getlist('servicios')
-        total = 0
-        for servicio in servicios:
-            total += Servicio.objects.get(id=servicio).costo
+        total = request.POST.get('total')
         venta = Venta(fecha=fecha, metodopago=metodopago, cliente=cliente, total=total)
         venta.save()
-        for servicio in servicios:
-            venta.servicio.add(Servicio.objects.get(id=servicio))
-        return redirect('/generarFactura/')
-    return redirect('/agregarModificarVenta/')
+    return redirect('/agregarModificarVenta_View/')
 
 def obtener_servicio(request, servicio_id):
     servicio = get_object_or_404(Servicio, pk=servicio_id)
