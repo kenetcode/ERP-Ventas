@@ -5,17 +5,16 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Times New Roman', Times, serif; /*Tipo de letra*/
-    background-color: #ffffdf; /*Fondo*/
+    background-color: #526D82; /*Fondo*/
     padding: 0 10%; /*Margen lateral*/
 }
 
 .container {
-    background-color: white;
+    background-color: #9DB2BF;
     padding: 20px;
     border-radius: 30px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1),
-                0 5px 15px rgba(0, 0, 0, 0.1) inset, /* Sombra interior */
-                0 -5px 15px rgba(255, 255, 255, 0.5) inset; /* Resplandor interno */
+    box-shadow: 0 0 20px rgba(0, 0, 1, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra interior */           
     width: 700px;  /* Ancho ajustado */
     height: 500px;  /* Altura ajustada */
     border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
@@ -44,7 +43,8 @@ label {
 .form-grouptxt input{
     margin-left: 32px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #DDE6ED;
+    background-color: #DDE6ED;
     border-radius: 15px;
     margin-top: 10px;
     width: 50%;
@@ -53,7 +53,8 @@ label {
 .form-groupcod input{
     margin-left: 40px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #DDE6ED;
+    background-color: #DDE6ED;
     border-radius: 15px;
     margin-top: 20px;
     width: 50%;
@@ -62,7 +63,8 @@ label {
 .form-groupct input{
     margin-left: 50px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #DDE6ED;
+    background-color: #DDE6ED;
     border-radius: 15px;
     margin-top: 20px;
     width: 50%;
@@ -72,6 +74,7 @@ label {
     margin-left: 55px;
     padding: 10px;
     border: 1px solid #ccc;
+    background-color: #DDE6ED;
     border-radius: 15px;
     margin-top: 20px;
     width: 50%;
@@ -81,7 +84,8 @@ textarea{
     width: 50%;
     height: 60px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #DDE6ED;
+    background-color: #DDE6ED;
     border-radius: 15px;
     margin-left: 100px;
     resize: none;
@@ -95,7 +99,7 @@ textarea{
     border: none;
     border-radius:6px;
     cursor: pointer;
-    background-color: purple;
+    background-color: #27374d;
     opacity: 0.7;
     position: absolute;
     top: 86%;
@@ -111,7 +115,7 @@ textarea{
     border: none;
     border-radius:6px;
     cursor: pointer;
-    background-color: purple;
+    background-color: #27374d;
     opacity: 0.7;
     position: absolute;
     top: 86%;

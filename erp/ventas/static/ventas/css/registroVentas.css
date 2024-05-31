@@ -1,13 +1,15 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .container {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #9DB2BF;
+    box-shadow: 0 0 10px rgba(0, 0, 1, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #9DB2BF;
 }
 
 header {
@@ -38,10 +40,19 @@ header h1 {
 .search-container button {
     padding: 5px 10px;
     margin-right: 10px;
+    background-color: #27374D;
+    opacity: 0.7;
+    border: none;
+    color: white;
+}
+
+.search-container button:hover{
+    background-color: #27374D;
+    opacity: 1;
 }
 
 .new-sale {
-    background-color: purple;
+    background-color: #27374D;
     color: white;
     border: none;
     cursor: pointer;
@@ -49,7 +60,7 @@ header h1 {
 }
 
 .new-sale:hover {
-    background-color: purple;
+    background-color: #27374D;
     opacity: 1;
 }
 
@@ -59,7 +70,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #aa8caf;
+    border: 1px solid #27374D;
 }
 
 th, td {
@@ -69,20 +80,11 @@ th, td {
 }
 
 th {
-    background-color: #aa8caf;
+    background-color: #27374D;
 }
 
-.edit-btn, .delete-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
+.filaPrincipal{
+    color: white;
 }
 
-.edit-btn {
-    color: #ffa500;
-}
 
-.delete-btn {
-    color: #ff0000;
-}

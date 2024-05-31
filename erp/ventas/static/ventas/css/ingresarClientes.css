@@ -5,17 +5,16 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Times New Roman', Times, serif; /*Tipo de letra*/
-    background-color: #ffffdf; /*Fondo*/
+    background-color: #526D82; /*Fondo*/
     padding: 0 10%; /*Margen lateral*/
 }
 
 .container {
-    background-color: white;
+    background-color: #9DB2BF;
     padding: 20px;
     border-radius: 30px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1),
-                0 5px 15px rgba(0, 0, 0, 0.1) inset, /* Sombra interior */
-                0 -5px 15px rgba(255, 255, 255, 0.5) inset; /* Resplandor interno */
+    box-shadow: 0 0 20px rgba(0, 0, 1, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.1); /* Resplandor interno */
     width: 700px;  /* Ancho ajustado */
     height: 500px;  /* Altura ajustada */
     border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
@@ -45,15 +44,17 @@ select[id="tipo-cliente"]{
     top: 30%;
     right: 30px;
     width: auto;
+    border: 1px solid #DDE6ED;
 }
 
 input[type="text"],
 input[type="email"] {
     width: calc(50% - 10px); /* Ajuste de ancho para 50% */
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
     margin-top: 5px;
+    border: 1px solid #DDE6ED;
+    background-color: #DDE6ED;
 }
 
 .form-buttons {
@@ -72,7 +73,7 @@ input[type="email"] {
     border: none;
     border-radius:6px;
     cursor: pointer;
-    background-color: purple;
+    background-color: #27374d;
     opacity: 0.7;
     position: absolute;
     top: 86%;
@@ -87,7 +88,7 @@ input[type="email"] {
     border: none;
     border-radius:6px;
     cursor: pointer;
-    background-color: purple;
+    background-color: #27374d;
     opacity: 0.7;
     position: absolute;
     top: 86%;

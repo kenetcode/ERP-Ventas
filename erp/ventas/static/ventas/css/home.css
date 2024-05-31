@@ -2,16 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 :root{
-    --body-color: #eff0f1;
-    --sidebar-color: #FFF;
+    --body-color: #526D82;
+    --sidebar-color: #9DB2BF;
     --primary-color: #232424;
     --primary-color-light: #f0f0f1;
     --toggle-color: #b4adad;
-    --text-color: #444343;
+    --text-color: black;
 
     --tran-03: all 0.2s ease;
     --tran-03: all 0.3s ease;
@@ -21,7 +21,7 @@
 
 body{
     min-height: 100vh;
-    background-color: var(--body-color);
+    background-color: var(--body-color); 
     transition: var(--tran-05);
     overflow: hidden;
 }

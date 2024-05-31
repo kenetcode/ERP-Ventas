@@ -13,8 +13,10 @@ body{ /*Este el es css para el cuerpo de la pagina*/
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #9D82BF;
+    box-shadow: 0 0 10px rgba(0, 0, 1, 0.1)
+                0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #9DB2BF;
 }
 
 .table-container{ /*Cambios para la clase de la tabla*/
@@ -29,11 +31,11 @@ table {
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #27374d;
 }
 
 th{
-    background-color: #aa8caf;
+    background-color: #27374d;
 }
 
 th, td {
@@ -41,7 +43,11 @@ th, td {
     text-align: center;
     width: 35px;
     height: 35px;
-    border: 1px solid #aa8caf;
+    border: 1px solid #27374d;
+}
+
+.filaPrincipal{
+    color: white;
 }
 
 .icon button{ /*Al momento de pasar el cursor en la imagen se cambia el cursor*/
@@ -68,7 +74,7 @@ header h1 {
     border: none;
     border-radius:6px;
     cursor: pointer;
-    background-color: purple;
+    background-color: #27374d;
     opacity: 0.7;
     position: absolute;
     left: 82%;
@@ -101,8 +107,7 @@ button:hover {
     border: none;
     border-radius:6px;
     cursor: pointer;
-    border: 1px solid ;
-    background-color: purple;
+    background-color: #27374d;
     opacity: 0.7;
 }
 
