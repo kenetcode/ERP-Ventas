@@ -74,7 +74,9 @@ def consultarCliente(request):
 
 @login_required 
 def agregarModificarVenta_View(request):
-    return render(request, 'agregarModificarVenta.html')
+    clientes = Cliente.objects.all()
+    servicios = Servicio.objects.all()
+    return render(request, 'agregarModificarVenta.html', {'clientes': clientes, 'servicios': servicios})
 
 @login_required 
 def menuGestor_View(request):
