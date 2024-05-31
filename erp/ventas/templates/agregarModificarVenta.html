@@ -40,34 +40,37 @@
             </select>
             <button id="agregarServicio">Agregar Servicio</button>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Servicio</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody id="serviciosTableBody">
-                <tr>
-                
-                </tr>
-            </tbody>
-        </table>
+        <!--style="overflow-y: auto; height: 200px"-->
+        <div style="overflow-y: auto; height: 200px">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="serviciosTableBody">
+                    <tr>
+                    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <table class="totals">
-            <tbody>
+            <tbody id="totalventa">
                 <tr>
                     <td>Subtotal:</td>
-                    <td>$1500.00</td>
+                    <td>0</td>
                 </tr>
                 <tr>
                     <td>IVA:</td>
-                    <td>$195</td>
+                    <td>0</td>
                 </tr>
                 <tr>
                     <td>Total:</td>
-                    <td>$1695</td>
+                    <td>0</td>
                 </tr>
             </tbody>
         </table>
@@ -76,27 +79,7 @@
             <button id="cancelar">Cancelar</button>
         </div>
     </div>
-
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#agregarServicio').click(function (e) {
-                e.preventDefault();
-                var servicio_id = $('#servicio').val();
-                $.ajax({
-                    url: 'obtener_servicio/' + servicio_id + '/',
-                    method: 'GET',
-                    success: function (data) {
-                        var table = $('table:first > tbody');
-                        var row = '<tr><td>' + data.nombre + '</td><td>' + data.descripcion + '</td><td>' + data.costo + '</td><td class="icon"><button class="delete-button"><img src="https://acortar.link/49Ychz" alt="Eliminar" /></button></td></tr>';
-                        table.append(row);
-                    }
-                });
-            });
-        });
-    </script>-->
-
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -117,16 +100,44 @@
                         var table = $('#serviciosTableBody');
                         var row = '<tr><td>' + data.nombre + '</td><td>' + data.descripcion + '</td><td>' + data.precio + '</td><td class="icon"><button class="delete-button"><img src="https://acortar.link/49Ychz" alt="Eliminar" /></button></td></tr>';
                         table.append(row);
+                        //Aqui va la funcion para calcular el total
+                        var tableTotal = $('#totalventa')
+                        var subtotal = tableTotal.find('tr:first');
+                        var secondCellValue = subtotal.find('td:eq(1)').text();
+                        var subtotalCalc = parseFloat(data.precio) + parseFloat(secondCellValue);
+                        subtotal.find('td:eq(1)').text(subtotalCalc.toFixed(2));
+                        var iva = tableTotal.find('tr:eq(1)');
+                        var ivaCalc = parseFloat(subtotalCalc)*(0.13);
+                        iva.find('td:eq(1)').text(ivaCalc.toFixed(2));                       
+                        var total = tableTotal.find('tr:eq(2)');
+                        var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
+                        total.find('td:eq(1)').text(totalCalc.toFixed(2)); 
                     }
                 });
+                $('#servicio').val($('#servicio option:first').val());               
             });
 
             $(document).on('click', '.delete-button', function () {
+                $(this).closest('tr').find('td:eq(2)').each(function() {
+                    var contenidoCelda = $(this).text();
+                    var tableTotal = $('#totalventa');
+                    var subtotal = tableTotal.find('tr:first');
+                    var secondCellValue = subtotal.find('td:eq(1)').text();
+                    var subtotalCalc = parseFloat(secondCellValue)-parseFloat(contenidoCelda);
+                    subtotal.find('td:eq(1)').text(subtotalCalc.toFixed(2));
+                    var iva = tableTotal.find('tr:eq(1)');
+                    var ivaCalc = parseFloat(subtotalCalc)*(0.13);
+                    iva.find('td:eq(1)').text(ivaCalc.toFixed(2));                       
+                    var total = tableTotal.find('tr:eq(2)');
+                    var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
+                    total.find('td:eq(1)').text(totalCalc.toFixed(2)); 
+                });
                 $(this).closest('tr').remove();
             });
 
-            //$('#servicio').val($('#servicio option:first').val()); arreglar esto
+            
         });
+
 
     </script>
 
