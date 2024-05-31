@@ -6,8 +6,7 @@ body {
     margin: 0;
     font-family: 'Times New Roman', Times, serif; /*Tipo de letra*/
     background-color: #ffffdf; /*Fondo*/
-    margin: 0% 10%; /*Margen*/
-    padding: 0; /*Borde (no valores negativos)*/
+    padding: 0 10%; /*Margen lateral*/
 }
 
 .container {
@@ -20,6 +19,7 @@ body {
     width: 700px;  /* Ancho ajustado */
     height: 500px;  /* Altura ajustada */
     border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
+    position: relative;
 }
 
 header h1 {
@@ -90,38 +90,33 @@ textarea{
 }
 
 .cancel button{
-    margin-right: 10px;
     padding: 5px 10px;
     color: white;
     border: none;
     border-radius:6px;
     cursor: pointer;
-    border: 1px solid ;
     background-color: purple;
     opacity: 0.7;
-    margin: Center;
     position: absolute;
-    top: 80%;
-    left: 35%;
-    width: auto;
+    top: 86%;
+    left: 50%;
+    width: 200;
     height: 40px;
     
 }
 
 .ingress button{
-    margin-right: 10px;
     padding: 5px 10px;
     color: white;
     border: none;
     border-radius:6px;
     cursor: pointer;
-    border: 1px solid ;
     background-color: purple;
     opacity: 0.7;
     position: absolute;
-    top: 80%;
-    left: 50%;
-    width: auto;
+    top: 86%;
+    left: 30%;
+    width: 200;
     height: 40px;
 }
 
@@ -132,4 +127,3 @@ textarea{
 .ingress button:hover {
     opacity: 1; /* Opacidad del 100% al pasar el cursor */
 }
-
