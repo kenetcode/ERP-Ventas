@@ -16,7 +16,7 @@
       <header>
         <h1>Modificar Cliente</h1>
       </header>
-      <form action="/editarCliente/" method="post">
+      <form action="/editarCliente/" method="post" id="clientForm">
         {% csrf_token %}
         <div class="form-group">
           <label for="name">Nombre:</label>
@@ -55,7 +55,7 @@
 
         <!--Luego de eso Hacemos los respectivos botones de la pantalla-->
         <div class="guardar">
-          <button>Guardar</button>
+          <button type="submit">Guardar</button>
         </div>
       </form>
 
@@ -68,5 +68,56 @@
       </form>
       
     </div>
+
+    <script>
+
+      document.getElementById("clientForm").addEventListener("submit", function (event) {
+        // Evita el envío del formulario
+        event.preventDefault();
+  
+        // Obtiene los valores del formulario
+        var nombre = document.getElementById("name").value;
+        var nombreComercial = document.getElementById("nameComercial").value;
+        var direccion = document.getElementById("direccion").value;
+        var telefono = document.getElementById("telefono").value;
+        var email = document.getElementById("email").value;
+  
+        // Valida los valores
+        if (!nombre || !/^[a-zA-Z\s]+$/.test(nombre)) {
+          alert("Por favor, introduce un nombre válido. Solo se permiten letras y espacios.");
+          document.getElementById("name").value = ""; // Limpia el campo
+          return;
+        }
+  
+        if (!nombreComercial || !/^[a-zA-Z\s]+$/.test(nombreComercial)) {
+          alert("Por favor, introduce un nombre comercial válido. Solo se permiten letras y espacios.");
+          document.getElementById("nameComercial").value = ""; // Limpia el campo
+          return;
+        }
+  
+        if (!direccion || !/^[a-zA-Z0-9\s,]+$/.test(direccion)) {
+          alert("Por favor, introduce una dirección válida. Solo se permiten letras, números, espacios y comas.");
+          document.getElementById("direccion").value = ""; // Limpia el campo
+          return;
+        }
+  
+        if (!telefono || !/^\d{8}$/.test(telefono)) {
+          alert("Por favor, introduce un teléfono válido. Debe contener exactamente 8 números.");
+          document.getElementById("telefono").value = ""; // Limpia el campo
+          return;
+        }
+  
+        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+          alert("Por favor, introduce un email válido.");
+          document.getElementById("email").value = ""; // Limpia el campo
+          return;
+        }
+  
+        // Si todo es válido, envía el formulario
+        this.submit();
+      });
+  
+    </script>
+
   </body>
 </html>

@@ -1,71 +1,119 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ingresar Nuevo Cliente</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'ventas/css/ingresarClientes.css' %}"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>Ingresar Nuevo Cliente</h1>
-      </header>
-      <form action="ingresarCliente/" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="name">Nombre:</label>
-          <!--Estos serian los label-->
-          <input type="text" id="name" name="name" />
-        </div>
 
-        <label for="tipo-cliente" id="label-tipo-cliente"
-          >Tipo de Cliente:</label
-        >
-        <select id="tipo-cliente" name="tipo-cliente">
-          <option value="empresa">Empresa</option>
-          <option value="persona">Persona</option>
-        </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingresar Nuevo Cliente</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/ingresarClientes.css' %}" />
+</head>
 
-        <div class="form-group">
-          <label for="nameComercial">Nombre Comercial:</label>
-          <input type="text" id="nameComercial" name="nameComercial" />
-        </div>
+<body>
+  <div class="container">
+    <header>
+      <h1>Ingresar Nuevo Cliente</h1>
+    </header>
+    <form action="ingresarCliente/" method="post" id="clientForm">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <!--Estos serian los label-->
+        <input type="text" id="name" name="name" />
+      </div>
 
-        <div class="form-group">
-          <label for="direccion">Direccion:</label>
-          <input type="text" id="direccion" name="direccion" />
-        </div>
+      <label for="tipo-cliente" id="label-tipo-cliente">Tipo de Cliente:</label>
+      <select id="tipo-cliente" name="tipo-cliente">
+        <option value="empresa">Empresa</option>
+        <option value="persona">Persona</option>
+      </select>
 
-        <div class="form-group">
-          <label for="telefono">Telefono:</label>
-          <input type="text" id="telefono" name="telefono" />
-        </div>
+      <div class="form-group">
+        <label for="nameComercial">Nombre Comercial:</label>
+        <input type="text" id="nameComercial" name="nameComercial" />
+      </div>
 
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" />
-        </div>
+      <div class="form-group">
+        <label for="direccion">Direccion:</label>
+        <input type="text" id="direccion" name="direccion" />
+      </div>
 
-        <div class="guardar">
-          <button>Guardar</button>
-        </div>
-      </form>
+      <div class="form-group">
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" />
+      </div>
 
-      <!--Luego de eso Hacemos los respectivos botones de la pantalla-->
-      <form action="/listadoClientes/">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+      </div>
 
-        <div class="cancel">
-          <button>Cancelar</button>
-        </div>
+      <div class="guardar">
+        <button type="submit">Guardar</button>
+      </div>
+    </form>
 
-      </form>
+    <!--Luego de eso Hacemos los respectivos botones de la pantalla-->
+    <form action="/listadoClientes/">
 
-    </div>
-  </body>
+      <div class="cancel">
+        <button>Cancelar</button>
+      </div>
+
+    </form>
+
+  </div>
+
+  <script>
+
+    document.getElementById("clientForm").addEventListener("submit", function (event) {
+      // Evita el envío del formulario
+      event.preventDefault();
+
+      // Obtiene los valores del formulario
+      var nombre = document.getElementById("name").value;
+      var nombreComercial = document.getElementById("nameComercial").value;
+      var direccion = document.getElementById("direccion").value;
+      var telefono = document.getElementById("telefono").value;
+      var email = document.getElementById("email").value;
+
+      // Valida los valores
+      if (!nombre || !/^[a-zA-Z\s]+$/.test(nombre)) {
+        alert("Por favor, introduce un nombre válido. Solo se permiten letras y espacios.");
+        document.getElementById("name").value = ""; // Limpia el campo
+        return;
+      }
+
+      if (!nombreComercial || !/^[a-zA-Z\s]+$/.test(nombreComercial)) {
+        alert("Por favor, introduce un nombre comercial válido. Solo se permiten letras y espacios.");
+        document.getElementById("nameComercial").value = ""; // Limpia el campo
+        return;
+      }
+
+      if (!direccion || !/^[a-zA-Z0-9\s,]+$/.test(direccion)) {
+        alert("Por favor, introduce una dirección válida. Solo se permiten letras, números, espacios y comas.");
+        document.getElementById("direccion").value = ""; // Limpia el campo
+        return;
+      }
+
+      if (!telefono || !/^\d{8}$/.test(telefono)) {
+        alert("Por favor, introduce un teléfono válido. Debe contener exactamente 8 números.");
+        document.getElementById("telefono").value = ""; // Limpia el campo
+        return;
+      }
+
+      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        alert("Por favor, introduce un email válido.");
+        document.getElementById("email").value = ""; // Limpia el campo
+        return;
+      }
+
+      // Si todo es válido, envía el formulario
+      this.submit();
+    });
+
+  </script>
+
+</body>
+
 </html>

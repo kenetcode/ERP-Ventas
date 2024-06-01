@@ -1,48 +1,86 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuevo Servicio</title>
     <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/nuevoServicio.css' %}">
 </head>
+
 <body>
     <div class="container">
 
         <header>
             <h1>Ingresar Nuevo Servicio</h1>
         </header>
-    <form action="/ingresarServicio/" method="post">
-        {% csrf_token %}
-        <div class="form-grouptxt">
-            <label for="name">Nombre:</label> <!--Estos serian los label-->
-            <input type="text" id="name" name="name">
-        </div>
+        <form action="/ingresarServicio/" method="post" id="serviceForm">
+            {% csrf_token %}
+            <div class="form-grouptxt">
+                <label for="name">Nombre:</label> <!--Estos serian los label-->
+                <input type="text" id="name" name="name">
+            </div>
 
-        <div class="descripcion1">
-            <label for="Descripcion">Descripcion:</label>
-            <textarea id="descripcion" name="descripcion"></textarea>
-        </div>
-        
-        <div class="form-groupct">
-            <label for="Costo">Costo:</label>
-            <input type="costo" id="costo" name="costo">
-        </div>
+            <div class="descripcion1">
+                <label for="Descripcion">Descripcion:</label>
+                <textarea id="descripcion" name="descripcion"></textarea>
+            </div>
 
-        <div class="ingress">
-            <button>Ingresar Servicio</button>
-        </div>
-    </form>
+            <div class="form-groupct">
+                <label for="Costo">Costo:</label>
+                <input type="costo" id="costo" name="costo">
+            </div>
+
+            <div class="ingress">
+                <button id="submitButton">Ingresar Servicio</button>
+            </div>
+        </form>
         <!--Luego de eso Hacemos los respectivos botones de la pantalla-->
-        
-    <form action="/listadoServicio/">
-        {% csrf_token %}
-        <div class="cancel">
-            <button>Cancelar</button>
-        </div>
-    </form>
-        
+
+        <form action="/listadoServicio/">
+            {% csrf_token %}
+            <div class="cancel">
+                <button>Cancelar</button>
+            </div>
+        </form>
+
     </div>
+
+    <script>
+        document.getElementById("submitButton").addEventListener("click", function (event) {
+            // Evita el envío del formulario
+            event.preventDefault();
+
+            // Obtiene los valores del formulario
+            var name = document.getElementById("name").value;
+            var description = document.getElementById("descripcion").value;
+            var cost = document.getElementById("costo").value;
+
+            // Valida los valores
+            if (!name || !/^[a-zA-Z\s]+$/.test(name)) {
+                alert("Por favor, introduce un nombre válido. Solo se permiten letras y espacios.");
+                document.getElementById("name").value = ""; // Limpia el campo
+                return;
+            }
+
+            if (!description || !/^[a-zA-Z0-9\s]+$/.test(description)) {
+                alert("Por favor, introduce una descripción válida. Solo se permiten letras, números y espacios.");
+                document.getElementById("descripcion").value = ""; // Limpia el campo
+                return;
+            }
+
+            if (!cost || isNaN(cost)) {
+                alert("Por favor, introduce un costo válido.");
+                document.getElementById("costo").value = ""; // Limpia el campo
+                return;
+            }
+
+            // Si todo es válido, envía el formulario
+            document.getElementById("serviceForm").submit();
+        });
+    </script>
+
 </body>
+
 </html>
