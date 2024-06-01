@@ -39,7 +39,16 @@ h1 {
 
 
 .buttons {
-    text-align: center;
+    text-align: right;
+}
+
+.buttonEditar {
+    
+    color: white;
+    border: none;
+    margin-right: 100px;
+    margin-top: -56px;
+    text-align: right;
 }
 
 button {
@@ -58,18 +67,72 @@ button:hover {
 }
 
 .totals {
-    width: 300px;
+    width: 250px;
     margin-left: auto;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #000000;
     border-collapse: collapse;
+    
 }
 
 .totals td {
     padding: 8px;
     text-align: right;
+    border: 1px solid #000000;
 }
 
 .totals tr:first-child td {
     border-top: none;
+}
+
+.totals td:nth-child(1) {
+    width: 1.8%;
+    margin: 10px;
+    
+}
+
+.totals td:nth-child(2) {
+    width: 13%;
+    text-align: center;
+}
+
+.invoice-table {
+    width: 100%;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border: 1px solid #000000;
+    border-collapse: collapse;
+
+}
+
+.filaPrincipal {
+    height: 30px;
+
+    
+}
+
+.invoice-table td:nth-child(2) {
+    width: 50%;
+}
+
+.invoice-table td:nth-child(1) {
+    width: 30%;
+}
+
+.invoice-table td:nth-child(3) {
+    width: 20%;
+}
+
+.invoice-table th, .invoice-table td {
+    /*background-color: #000000; No hacer esto*/
+    border: 1px solid #000000;
+}
+
+.invoice-table td {
+    padding: 8px;
+    text-align: center;
+}
+
+.invoice-number {
+    text-transform: uppercase;
 }
