@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <h1>Ingresar Venta</h1>
-        <form action="agregarModificarVenta/" method="POST"> <!--falta modificar-->
+        <form id="ventaForm" action="agregarModificarVenta/" method="POST"> <!--falta modificar-->
             {% csrf_token %}
             <div class="form-group">
                 <label for="cliente">Cliente:</label>
@@ -40,7 +40,7 @@
                     <option value="{{ servicio.id }}">{{ servicio.nombre }}</option>
                     {% endfor %}
                 </select>
-                <button id="agregarServicio">Agregar Servicio</button>
+                <button type="submit" id="agregarServicio">Agregar Servicio</button>
             </div>
             <!--style="overflow-y: auto; height: 200px"-->
             <div style="overflow-y: auto; height: 200px">
@@ -96,7 +96,29 @@
             //
             $('#agregarServicio').click(function (e) {
                 e.preventDefault();
-                var servicio_id = $('#servicio').val(); 
+
+                // Obtiene los valores de los campos
+                var cliente = $('#cliente').val();
+                var metodoPago = $('#metodopago').val();
+                var servicio_id = $('#servicio').val();
+                var fecha = $('#fecha').val();
+
+                // Valida los valores
+                if (cliente === "Seleccionar") {
+                    alert("Por favor, selecciona un cliente.");
+                    return;
+                }
+
+                if (!fecha) {
+                    alert("Por favor, selecciona una fecha.");
+                    return;
+                }
+
+                if (metodoPago === "Seleccionar") {
+                    alert("Por favor, selecciona un método de pago.");
+                    return;
+                }
+
                 // Verifica que el servicio_id sea un número válido
                 if (isNaN(servicio_id) || servicio_id === "Seleccionar") {
                     alert('Por favor selecciona un servicio válido.');
@@ -110,7 +132,7 @@
                         var table = $('#serviciosTableBody');
                         var row = '<tr><td>' + data.nombre + '</td><td>' + data.descripcion + '</td><td>' + data.precio + '</td><td class="icon"><button class="delete-button"><img src="https://acortar.link/49Ychz" alt="Eliminar" /></button></td></tr>';
                         table.append(row);
-                        
+
                         //Aqui va la funcion para calcular el total
                         var tableTotal = $('#totalventa')
                         var subtotal = tableTotal.find('tr:first');
@@ -123,7 +145,7 @@
                         var total = tableTotal.find('tr:eq(2)');
                         var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
                         total.find('td:eq(1)').text(totalCalc.toFixed(2));
-                        serviciosSeleccionados.push(servicio_id);                        
+                        serviciosSeleccionados.push(servicio_id);
                     }
                 });
                 $('#servicio').val($('#servicio option:first').val());
@@ -142,11 +164,11 @@
                     iva.find('td:eq(1)').text(ivaCalc.toFixed(2));
                     var total = tableTotal.find('tr:eq(2)');
                     var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
-                    total.find('td:eq(1)').text(totalCalc.toFixed(2));                    
+                    total.find('td:eq(1)').text(totalCalc.toFixed(2));
                 });
                 var filaAEliminar = $(this).closest('tr');
                 var indiceFila = filaAEliminar.index();
-                serviciosSeleccionados.splice(indiceFila-1,1);
+                serviciosSeleccionados.splice(indiceFila - 1, 1);
                 $(this).closest('tr').remove();
             });
             //
@@ -154,25 +176,52 @@
             $('#guardar').click(function (e) {
                 e.preventDefault();
 
+                // Obtiene los valores de los campos
+                var cliente = $('#cliente').val();
+                var metodoPago = $('#metodopago').val();
+                var fecha = $('#fecha').val();
+
+                // Valida los valores
+                if (cliente === "Seleccionar") {
+                    alert("Por favor, selecciona un cliente.");
+                    return false; // Sale de la función
+                }
+
+                if (!fecha) {
+                    alert("Por favor, selecciona una fecha.");
+                    return false; // Sale de la función
+                }
+
+                if (metodoPago === "Seleccionar") {
+                    alert("Por favor, selecciona un método de pago.");
+                    return false; // Sale de la función
+                }
+
+                // Verifica que al menos un servicio ha sido agregado
+                if (serviciosSeleccionados.length === 0) {
+                    alert('Por favor agrega al menos un servicio.');
+                    return false; // Sale de la función
+                }
+
                 var formDataServ = $('form').serialize();
-                $.each(serviciosSeleccionados, function(index, id) {
-                    formDataServ += '&servicios['+index+'][id]=' + id;
+                $.each(serviciosSeleccionados, function (index, id) {
+                    formDataServ += '&servicios[' + index + '][id]=' + id;
                 });
-                $.ajax({                
-                        url: '/obtenerServicios/',
-                        method: 'POST',
-                        data: formDataServ,
+                $.ajax({
+                    url: '/obtenerServicios/',
+                    method: 'POST',
+                    data: formDataServ,
                     success: function (response) {
                         //Aquí puedes manejar la respuesta del servidor
                         //window.location.href = "/generarFactura/"; 
                         var total = $('#totalventa').find('tr:eq(2)').find('td:eq(1)').text();
-                        var formData = $('form').serialize() + '&total=' + total;                       
+                        var formData = $('form').serialize() + '&total=' + total;
                         $.ajax({
                             url: '/agregarModificarVenta/',
                             method: 'POST',
                             data: formData,
                             success: function (response) {
-                                window.location.href = "/generarFactura/"                               
+                                window.location.href = "/generarFactura/"
                             }
                         });
 
