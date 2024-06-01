@@ -165,7 +165,7 @@
                             formDataServ += '&servicios['+index+'][id]=' + id;
                         });
                         $.ajax({
-                            url: '/generarFactura/',
+                            url: '/obtenerServicios/',
                             method: 'POST',
                             data: formDataServ,
                             success: function (response) {
