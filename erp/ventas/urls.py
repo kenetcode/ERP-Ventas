@@ -26,5 +26,5 @@ urlpatterns = [
     path('obtener_servicio/<int:servicio_id>/', views.obtener_servicio, name='obtener_servicio'),
     path('agregarModificarVenta/', views.agregarModificarVenta, name='agregarModificarVenta'), #nueva url
     #path('obtenerServicios/', views.obtenerServicios, name='obtenerServicios'),
-
+    path('buscarVenta/', views.buscarVenta, name='buscarVenta'),
 ]   
