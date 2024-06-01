@@ -42,6 +42,6 @@ urlpatterns = [
     path('buscarServicio/', include('ventas.urls')),
     path('obtener_servicio/<int:servicio_id>/', include('ventas.urls')),
     path('agregarModificarVenta/', include('ventas.urls')), #nueva url
-    #path('obtenerServicios/', include('ventas.urls')),
+    path('obtenerServicios/', include('ventas.urls')),
     path('buscarVenta',include('ventas.urls')),
 ]   

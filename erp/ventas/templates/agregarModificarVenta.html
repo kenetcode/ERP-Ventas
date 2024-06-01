@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <h1>Ingresar Venta - Modificar Venta</h1>
+        <h1>Ingresar Venta</h1>
         <form action="agregarModificarVenta/" method="POST"> <!--falta modificar-->
             {% csrf_token %}
             <div class="form-group">
@@ -142,10 +142,11 @@
                     iva.find('td:eq(1)').text(ivaCalc.toFixed(2));
                     var total = tableTotal.find('tr:eq(2)');
                     var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
-                    total.find('td:eq(1)').text(totalCalc.toFixed(2));
-                    var servicioAEliminar = $(this).closest('tr').find('td:eq(0)').text();
-                    serviciosSeleccionados = serviciosSeleccionados.filter(function(id) {return id !== servicioAEliminar;});
+                    total.find('td:eq(1)').text(totalCalc.toFixed(2));                    
                 });
+                var filaAEliminar = $(this).closest('tr');
+                var indiceFila = filaAEliminar.index();
+                serviciosSeleccionados.splice(indiceFila-1,1);
                 $(this).closest('tr').remove();
             });
             //
@@ -153,23 +154,23 @@
             $('#guardar').click(function (e) {
                 e.preventDefault();
 
-                var total = $('#totalventa').find('tr:eq(2)').find('td:eq(1)').text();
-                var formData = $('form').serialize() + '&total=' + total;
                 var formDataServ = $('form').serialize();
-                $.ajax({
-                    url: '/agregarModificarVenta/',
-                    method: 'POST',
-                    data: formData,
+                $.each(serviciosSeleccionados, function(index, id) {
+                    formDataServ += '&servicios['+index+'][id]=' + id;
+                });
+                $.ajax({                
+                        url: '/obtenerServicios/',
+                        method: 'POST',
+                        data: formDataServ,
                     success: function (response) {
                         //Aquí puedes manejar la respuesta del servidor
-                        //window.location.href = "/generarFactura/";
-                        $.each(serviciosSeleccionados, function(index, id) {
-                            formDataServ += '&servicios['+index+'][id]=' + id;
-                        });
+                        //window.location.href = "/generarFactura/"; 
+                        var total = $('#totalventa').find('tr:eq(2)').find('td:eq(1)').text();
+                        var formData = $('form').serialize() + '&total=' + total;                       
                         $.ajax({
-                            url: '/generarFactura/',
+                            url: '/agregarModificarVenta/',
                             method: 'POST',
-                            data: formDataServ,
+                            data: formData,
                             success: function (response) {
                                 window.location.href = "/generarFactura/"                               
                             }

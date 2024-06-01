@@ -88,7 +88,7 @@ def agregarModificarVenta(request): #Nuevo metodo
         cliente = Cliente.objects.get(id=request.POST.get('cliente'))
         total = request.POST.get('total')
         venta = Venta(fecha=fecha, metodopago=metodopago, cliente=cliente, total=total)
-        venta.save()      
+        venta.save()  
         request.session['venta_id'] = venta.id
         return redirect('/generarFactura/')
 
@@ -104,29 +104,26 @@ def menuGestor_View(request):
 def menuAdministrador_View(request):
     return render(request, 'menuAdministrador.html')
 
-"""def obtenerServicios(request):
+def obtenerServicios(request):
     servicios = []
     for key in request.POST.keys():
         if key.startswith('servicios['):
             id_servicio = request.POST.get(key)
             servicios.append(id_servicio)
     print(servicios)
-    request.session['servicios_id'] = servicios """
+    request.session['servicios_id'] = servicios
+    return HttpResponse("")
 
 def generarFactura_View(request):
-    servicios = []
-    for key in request.POST.keys():
-        if key.startswith('servicios['):
-            id_servicio = request.POST.get(key)
-            servicios.append(get_object_or_404(Servicio, id=id_servicio))
-    print(servicios)
-    print("Hola Mundo")
+    servicios = request.session.get('servicios_id')
+    servicio = []
+    for s in servicios:
+        servicio.append(get_object_or_404(Servicio, id=s))
     venta_id = request.session.get('venta_id')
     venta = get_object_or_404(Venta, id=venta_id)  
     subtotal = round((venta.total/1.13), 2)
     iva = round(subtotal*0.13, 2)
-    context = {'venta': venta, 'subtotal': subtotal,'iva':iva, 'servicios': servicios}
-    print("AVCC")
+    context = {'venta': venta, 'subtotal': subtotal,'iva':iva, 'servicios':servicio}
     return render(request, 'generarFactura.html', context)
 
     

@@ -12,20 +12,18 @@
         <h1>Factura</h1>
         <div class="invoice-header">
             <div class="invoice-number">
-                <p>Número: F240001</p>
+                
                 <p>Fecha: {{venta.fecha}}</p>
+                <p>Cliente: {{venta.cliente.nombre}}</p>
+                <p>Metodo de Pago: {{venta.metodopago}}</p>
+
             </div>
-            <div class="invoice-company">
-                <p>Nombre de la empresa</p>
-            </div>
-            <div class="invoice-client">
-                <p>Cliente</p>
-                <p>{{venta.cliente.nombre}}</p>
-            </div>
+            
+        
         </div>
         <table class="invoice-table">
             <thead>
-                <tr>
+                <tr class="filaPrincipal">
                     <th>SERVICIO</th>
                     <th>DESCRIPCION</th>
                     <th>PRECIO</th>
@@ -34,9 +32,9 @@
             <tbody>
                 {% for servicio in servicios %}
                 <tr>
-                    <td>{{servicio.id.nombre}}</td>
-                    <td>{{servicio.id.descripcion}}</td>
-                    <td>{{servicio.id.costo}}</td>
+                    <td>{{servicio.nombre}}</td>
+                    <td>{{servicio.descripcion}}</td>
+                    <td>$ {{servicio.costo}}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -45,22 +43,33 @@
             <tbody>
                 <tr>
                     <td>Subtotal:</td>
-                    <td>{{subtotal}}</td>
+                    <td>$ {{subtotal}}</td>
                 </tr>
                 <tr>
                     <td>IVA:</td>
-                    <td>{{iva}}</td>
+                    <td>$ {{iva}}</td>
                 </tr>
                 <tr>
                     <td>Total:</td>
-                    <td>{{venta.total}}</td>
+                    <td>$ {{venta.total}}</td>
                 </tr>
             </tbody>
         </table>
         
         <div class="buttons">
-            <button>Aceptar</button>
+            <button>Imprimir</button>
+        </div>
+
+        <div class="buttonEditar">
+            <button onclick="goBack()">Editar</button>
         </div>
     </div>
+
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+    
 </body>
 </html>
