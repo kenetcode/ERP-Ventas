@@ -102,7 +102,9 @@
                 </form>
             </div>
         </header>
-        <table>
+        <div style="overflow-y: auto; height: 550px">
+
+          <table >
             <thead>
                 <tr class="filaPrincipal">
                     <th>Cliente</th>
@@ -122,6 +124,8 @@
               {% endfor %}
             </tbody>
         </table>
+
+        </div>
       </div>
 
     <script src="{% static 'ventas/js/prueba.js' %}"></script>
