@@ -140,10 +140,13 @@
                     iva.find('td:eq(1)').text(ivaCalc.toFixed(2));
                     var total = tableTotal.find('tr:eq(2)');
                     var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
-                    total.find('td:eq(1)').text(totalCalc.toFixed(2));
-                    var servicioAEliminar = $(this).closest('tr').find('td:eq(0)').text();
-                    serviciosSeleccionados = serviciosSeleccionados.filter(function(id) {return id !== servicioAEliminar;});
+                    total.find('td:eq(1)').text(totalCalc.toFixed(2));                    
                 });
+                //var servicioAEliminar = $(this).closest('tr').find('td:eq(0)').text();
+                //serviciosSeleccionados = serviciosSeleccionados.filter(function(nombre) {return nombre !== servicioAEliminar;});
+                var filaAEliminar = $(this).closest('tr');
+                var indiceFila = filaAEliminar.index();
+                serviciosSeleccionados.splice(indiceFila-1,1);
                 $(this).closest('tr').remove();
             });
             //

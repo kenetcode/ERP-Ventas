@@ -122,11 +122,9 @@ def generarFactura_View(request):
     print(servicios)
      print("Hola Mundo")"""
     servicios = request.session.get('servicios_id')
-    print(servicios)
     servicio = []
     for s in servicios:
         servicio.append(get_object_or_404(Servicio, id=s))
-    print(servicio[0])
     venta_id = request.session.get('venta_id')
     venta = get_object_or_404(Venta, id=venta_id)  
     subtotal = round((venta.total/1.13), 2)
