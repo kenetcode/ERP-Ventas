@@ -114,13 +114,6 @@ def obtenerServicios(request):
     return HttpResponse("")
 
 def generarFactura_View(request):
-    """servicios = []
-    for key in request.POST.keys():
-        if key.startswith('servicios['):
-            id_servicio = request.POST.get(key)
-            servicios.append(get_object_or_404(Servicio, id=id_servicio))
-    print(servicios)
-     print("Hola Mundo")"""
     servicios = request.session.get('servicios_id')
     servicio = []
     for s in servicios:
