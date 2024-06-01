@@ -90,10 +90,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+            var serviciosSeleccionados = [];
+            //
             $('#agregarServicio').click(function (e) {
                 e.preventDefault();
-                var servicio_id = $('#servicio').val();
-
+                var servicio_id = $('#servicio').val(); 
                 // Verifica que el servicio_id sea un número válido
                 if (isNaN(servicio_id) || servicio_id === "Seleccionar") {
                     alert('Por favor selecciona un servicio válido.');
@@ -107,6 +108,7 @@
                         var table = $('#serviciosTableBody');
                         var row = '<tr><td>' + data.nombre + '</td><td>' + data.descripcion + '</td><td>' + data.precio + '</td><td class="icon"><button class="delete-button"><img src="https://acortar.link/49Ychz" alt="Eliminar" /></button></td></tr>';
                         table.append(row);
+                        
                         //Aqui va la funcion para calcular el total
                         var tableTotal = $('#totalventa')
                         var subtotal = tableTotal.find('tr:first');
@@ -119,11 +121,12 @@
                         var total = tableTotal.find('tr:eq(2)');
                         var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
                         total.find('td:eq(1)').text(totalCalc.toFixed(2));
+                        serviciosSeleccionados.push(servicio_id);                        
                     }
                 });
                 $('#servicio').val($('#servicio option:first').val());
             });
-
+            //
             $(document).on('click', '.delete-button', function () {
                 $(this).closest('tr').find('td:eq(2)').each(function () {
                     var contenidoCelda = $(this).text();
@@ -138,31 +141,43 @@
                     var total = tableTotal.find('tr:eq(2)');
                     var totalCalc = parseFloat(subtotalCalc) + parseFloat(ivaCalc);
                     total.find('td:eq(1)').text(totalCalc.toFixed(2));
+                    var servicioAEliminar = $(this).closest('tr').find('td:eq(0)').text();
+                    serviciosSeleccionados = serviciosSeleccionados.filter(function(id) {return id !== servicioAEliminar;});
                 });
                 $(this).closest('tr').remove();
             });
-
+            //
+            //
             $('#guardar').click(function (e) {
                 e.preventDefault();
 
                 var total = $('#totalventa').find('tr:eq(2)').find('td:eq(1)').text();
                 var formData = $('form').serialize() + '&total=' + total;
-
+                var formDataServ = $('form').serialize();
                 $.ajax({
                     url: '/agregarModificarVenta/',
                     method: 'POST',
                     data: formData,
                     success: function (response) {
-                        // Aquí puedes manejar la respuesta del servidor
-                        window.location.href = "/generarFactura/";
+                        //Aquí puedes manejar la respuesta del servidor
+                        //window.location.href = "/generarFactura/";
+                        $.each(serviciosSeleccionados, function(index, id) {
+                            formDataServ += '&servicios['+index+'][id]=' + id;
+                        });
+                        $.ajax({
+                            url: '/generarFactura/',
+                            method: 'POST',
+                            data: formDataServ,
+                            success: function (response) {
+                                window.location.href = "/generarFactura/"                               
+                            }
+                        });
+
                     }
                 });
             });
-
-
+            //
         });
-
-
     </script>
 
 </body>

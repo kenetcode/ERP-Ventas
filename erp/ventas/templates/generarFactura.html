@@ -13,14 +13,14 @@
         <div class="invoice-header">
             <div class="invoice-number">
                 <p>Número: F240001</p>
-                <p>Fecha: ##/4/2024</p>
+                <p>Fecha: {{venta.fecha}}</p>
             </div>
             <div class="invoice-company">
                 <p>Nombre de la empresa</p>
             </div>
             <div class="invoice-client">
                 <p>Cliente</p>
-                <p>Nombre del cliente</p>
+                <p>{{venta.cliente.nombre}}</p>
             </div>
         </div>
         <table class="invoice-table">
@@ -32,26 +32,28 @@
                 </tr>
             </thead>
             <tbody>
+                {% for servicio in servicios %}
                 <tr>
-                    <td>alquiler</td>
-                    <td>Contrato de local</td>
-                    <td>$1500.00</td>
+                    <td>{{servicio.id.nombre}}</td>
+                    <td>{{servicio.id.descripcion}}</td>
+                    <td>{{servicio.id.costo}}</td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
         <table class="totals">
             <tbody>
                 <tr>
                     <td>Subtotal:</td>
-                    <td>$1500.00</td>
+                    <td>{{subtotal}}</td>
                 </tr>
                 <tr>
                     <td>IVA:</td>
-                    <td>$195</td>
+                    <td>{{iva}}</td>
                 </tr>
                 <tr>
                     <td>Total:</td>
-                    <td>$1695</td>
+                    <td>{{venta.total}}</td>
                 </tr>
             </tbody>
         </table>
