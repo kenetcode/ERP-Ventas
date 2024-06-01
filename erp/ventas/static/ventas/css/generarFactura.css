@@ -66,6 +66,12 @@ button:hover {
     opacity: 1; /* Opacidad del 100% al pasar el cursor */
 }
 
+@media print {
+    .no-print {
+        display: none;
+    }
+}
+
 .totals {
     width: 250px;
     margin-left: auto;

@@ -1,25 +1,27 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Factura</title>
     <link rel="stylesheet" type="text/css" href="{% static 'ventas/css/generarFactura.css' %}">
 </head>
+
 <body>
     <div class="invoice">
         <h1>Factura</h1>
         <div class="invoice-header">
             <div class="invoice-number">
-                
+
                 <p>Fecha: {{venta.fecha}}</p>
                 <p>Cliente: {{venta.cliente.nombre}}</p>
                 <p>Metodo de Pago: {{venta.metodopago}}</p>
 
             </div>
-            
-        
+
+
         </div>
         <table class="invoice-table">
             <thead>
@@ -55,21 +57,29 @@
                 </tr>
             </tbody>
         </table>
-        
-        <div class="buttons">
-            <button>Imprimir</button>
+
+        <div class="buttons no-print">
+            <button id="printButton">Imprimir</button>
         </div>
 
-        <div class="buttonEditar">
-            <button onclick="goBack()">Editar</button>
-        </div>
+        <form action="/registroVentas/" class="no-print">
+            <div class="buttonEditar">
+                <button onclick="goBack()">Aceptar</button>
+            </div>
+        </form>
+
     </div>
 
     <script>
-    function goBack() {
-        window.history.back();
-    }
+        function goBack() {
+            window.history.back();
+        }
+
+        document.getElementById("printButton").addEventListener("click", function () {
+            window.print();
+        });
     </script>
-    
+
 </body>
+
 </html>
