@@ -74,9 +74,6 @@ TEMPLATES = [
     },
 ]
 
-# Configuración de archivos estáticos para Css (para que no de el problema de kike)
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'ventas/static')]
 
 
 WSGI_APPLICATION = 'erp.wsgi.application'
