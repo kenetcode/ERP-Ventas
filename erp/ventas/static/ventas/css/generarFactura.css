@@ -5,17 +5,21 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Times New Roman', Times, serif; /*Tipo de letra*/
-    background-color: #ffffdf; /*Fondo*/
+    background-color: #526D82; /*Fondo*/
     margin: 0% 10%; /*Margen*/
     padding: 0; /*Borde (no valores negativos)*/
 }
 
 .invoice {
-    width: 80%;
-    max-width: 800px;
-    background-color: #fff;
+    background-color: #9DB2BF;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 1, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.1); /* Resplandor interno */
+    width: 700px;  /* Ancho ajustado */
+    height: 500px;  /* Altura ajustada */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
+    position: relative;
 }
 
 h1 {
@@ -44,7 +48,7 @@ h1 {
 
 .buttonEditar {
     
-    color: white;
+    color: #27374d;
     border: none;
     margin-right: 100px;
     margin-top: -56px;
@@ -54,7 +58,7 @@ h1 {
 button {
     margin: 10px;
     padding: 10px 20px;
-    background-color: purple;
+    background-color: #27374d;
     color: white;
     border: none;
     cursor: pointer;
@@ -62,11 +66,15 @@ button {
 }
 
 button:hover {
-    background-color: purple;
+    background-color: #27374d;
     opacity: 1; /* Opacidad del 100% al pasar el cursor */
 }
 
 @media print {
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
     .no-print {
         display: none;
     }
@@ -76,7 +84,7 @@ button:hover {
     width: 250px;
     margin-left: auto;
     margin-bottom: 20px;
-    border: 1px solid #000000;
+    border: 1px solid #27374d;
     border-collapse: collapse;
     
 }
@@ -84,7 +92,7 @@ button:hover {
 .totals td {
     padding: 8px;
     text-align: right;
-    border: 1px solid #000000;
+    border: 1px solid #27374d;
 }
 
 .totals tr:first-child td {
@@ -113,7 +121,7 @@ button:hover {
 
 .filaPrincipal {
     height: 30px;
-
+    color: white;
     
 }
 
@@ -141,4 +149,17 @@ button:hover {
 
 .invoice-number {
     text-transform: uppercase;
+}
+
+.invoice-table, .invoice-table th, .invoice-table td {
+    border: 1px solid #27374d;
+}
+
+.invoice-table th{
+    background-color: #27374d;
+}
+
+.Columna{
+    background-color: #27374d;
+    color: white;
 }
