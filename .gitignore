@@ -10,7 +10,7 @@ venv/
 .vscode/
 
 # Mac OS files
-.DS_Store
+*.DS_Store
 
 # C extensions
 *.so
