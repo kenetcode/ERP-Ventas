@@ -9,6 +9,9 @@ venv/
 # VS Code settings
 .vscode/
 
+# Mac OS files
+.DS_Store
+
 # C extensions
 *.so
 
